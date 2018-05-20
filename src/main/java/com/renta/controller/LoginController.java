@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.renta.dao.UserDAO;
 import com.renta.exception.DAOException;
+import com.renta.exception.EmptyResultException;
 import com.renta.exception.LoginException;
 import com.renta.model.User;
 import com.renta.services.SecurityService;
@@ -26,6 +28,10 @@ public class LoginController {
 
 	@Autowired
 	private SecurityService securityService;
+	
+	@Autowired
+	private UserDAO userDAO;
+	
 
 /*	
 	@GetMapping("/")
@@ -67,6 +73,43 @@ public class LoginController {
 			model.addAttribute("message", e.getMessage());
 			modelAndView = new ModelAndView("login", "command", new User());
 		}
+
+		return modelAndView;
+	}
+	
+	
+	@GetMapping("/register")
+	public ModelAndView register() {	
+		return new ModelAndView("redirect:/admin/usr/createform");
+	}
+	
+	
+	@PostMapping("/register")
+	public ModelAndView register(@ModelAttribute("SpringWeb") User user, ModelMap model)  {
+
+		
+		logger.info("register()");
+		logger.info(user.toString());
+
+		ModelAndView modelAndView = null;
+
+		try {
+				
+			userDAO.create(user.getUsername(), user.getPassword(), user.getNombre(), 
+							user.getApellido(), user.getCorreo(), user.getGenero());
+			
+			User usr = userDAO.finUserByUsername(user.getNombre());
+					
+			modelAndView = new ModelAndView("redirect:/", "command", usr);
+			
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			model.addAttribute("message", "Usuario y/o clave incorrectos");
+			modelAndView = new ModelAndView("login", "command", new User());
+		} catch (EmptyResultException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 
 		return modelAndView;
 	}

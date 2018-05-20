@@ -82,6 +82,4 @@ public class User {
 				+ nombre + ", apellido=" + apellido + ", correo=" + correo + ", genero=" + genero + "]";
 	}
 	
-
-	
-}
+	}

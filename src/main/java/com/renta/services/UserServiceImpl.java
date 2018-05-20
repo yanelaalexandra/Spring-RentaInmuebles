@@ -36,4 +36,11 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+
+	public void create(String username, String password, String nombre, String apellido, String correo, String genero)
+			throws DAOException {
+	userDAO.create( username, password, nombre, apellido, correo, genero);
+		
+	}
+
 }

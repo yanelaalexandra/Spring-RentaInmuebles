@@ -14,4 +14,10 @@ public interface UserService {
 	void update(String username, String password, String nombre, String apellido, String correo, String genero)
 	throws DAOException;
 	
+	void create(String username, String password, String nombre, String apellido, String correo, String genero)
+	throws DAOException;
+		
+	
+	
+	
 }

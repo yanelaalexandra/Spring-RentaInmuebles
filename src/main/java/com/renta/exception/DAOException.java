@@ -8,5 +8,7 @@ public class DAOException extends Exception{
 		// TODO Auto-generated constructor stub
 		super(message);
 	}
+	
+	
 
 }

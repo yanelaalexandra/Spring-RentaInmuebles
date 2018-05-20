@@ -27,8 +27,12 @@
 						<form:password path="password" class="form-control" />
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn btn-success" />
+						<input type="submit" value="Login" class="btn btn-success"/>
+						
 					</div>
+					<a href="<%=request.getContextPath()%>/register"
+					class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i>
+					Register</a>
 				</form:form>
 				<font color="red">${message}</font>
 			</div>

@@ -23,4 +23,5 @@ public interface UserDAO {
 	List<User> findUserByNombre(String nombre) throws DAOException, EmptyResultException;
 
 	User validate(String idUser, String clave) throws LoginException, DAOException;
-}
+
+	}

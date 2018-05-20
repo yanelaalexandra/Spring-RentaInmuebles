@@ -1,4 +1,8 @@
 package com.renta.controller;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.renta.model.User;
@@ -51,12 +56,12 @@ public class UserController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@GetMapping("/{user_id}")
-	public ModelAndView home(@PathVariable int user_id, ModelMap model) {
+	public ModelAndView home(@PathVariable int idusuario, ModelMap model) {
 
 		ModelAndView modelAndView = null;
 		User usr = new User();
 		try {
-			usr = userService.find(user_id);
+			usr = userService.find(idusuario);
 			logger.info(usr.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,6 +111,52 @@ public class UserController {
 
 		return modelAndView;
 	}
+	
+	
+	/*@GetMapping("/admin/usr/createform")
+	public ModelAndView formCreate(@ModelAttribute("SpringWeb") ModelMap model) {
+
+		ModelAndView modelAndView = null;
+
+		try {
+
+			modelAndView = new ModelAndView("redirect:/admin/usr/createform");
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+			//modelAndView = new ModelAndView("admin/usr/" + action, "command", new User());
+		}
+
+		return modelAndView;
+	}*/
+	
+	/*@GetMapping("/admin/usr/createform")
+	public String formCreate() {
+
+		return "admin/usr/createform";
+	}
+	
+	
+	@PostMapping("/admin/usr/createform")
+	public ModelAndView save(@ModelAttribute("SpringWeb") User usr, ModelMap model) {
+
+		
+		logger.info("usr = " + usr);
+		
+		ModelAndView modelAndView = null;
+
+		try {
+			userService.create(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
+					usr.getCorreo(),usr.getGenero());
+
+			modelAndView = new ModelAndView("redirect:/");
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+			modelAndView = new ModelAndView("redirect:/");
+		}
+
+		return modelAndView;
+	}*/
+	
 }
 
 
