@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.renta.model.User;
-import com.renta.UserService;
+import com.renta.services.UserService;
    
 /**
  * Handles requests for the application home page.
@@ -19,10 +19,10 @@ import com.renta.UserService;
 @Controller
 public class UserController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	private EmployeeService employeeService;
+	private UserService userService;
 	
 	
 	@GetMapping("/admin/menu")
@@ -32,17 +32,17 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/admin/emp/list")
-	public String list(@ModelAttribute("SpringWeb") Employee employee, ModelMap model) {
+	@GetMapping("/admin/usr/list")
+	public String list(@ModelAttribute("SpringWeb") User user, ModelMap model) {
 
 		try {
-			model.addAttribute("employees", employeeService.findAll());
+			model.addAttribute("user", UserService.findAll());
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 			model.addAttribute("message", e.getMessage());
 		}
 
-		return "admin/emp/list";
+		return "admin/usr/list";
 	}
 	
 	
@@ -51,57 +51,57 @@ public class UserController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@GetMapping("/{user_id}")
-	public ModelAndView home(@PathVariable int employee_id, ModelMap model) {
+	public ModelAndView home(@PathVariable int user_id, ModelMap model) {
 
 		ModelAndView modelAndView = null;
-		Employee emp = new User();
+		User usr = new User();
 		try {
-			emp = userService.find(employee_id);
-			logger.info(emp.toString());
+			usr = userService.find(user_id);
+			logger.info(usr.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		modelAndView = new ModelAndView("home", "command", emp);
+		modelAndView = new ModelAndView("home", "command", usr);
 
 		return modelAndView;
 	}
 	
-	@GetMapping("/admin/emp/{action}/{employee_id}")
-	public ModelAndView form(@PathVariable String action, @PathVariable int employee_id, ModelMap model) {
+	@GetMapping("/admin/usr/{action}/{user_id}")
+	public ModelAndView form(@PathVariable String action, @PathVariable int user_id, ModelMap model) {
 
 		// action = {"editform","deleteform"}
 		logger.info("action = " + action);
 		ModelAndView modelAndView = null;
 
 		try {
-			Employee emp = employeeService.find(employee_id);
-			logger.info(emp.toString());
-			modelAndView = new ModelAndView("admin/emp/" + action, "command", emp);
+			User usr = userService.find(user_id);
+			logger.info(usr.toString());
+			modelAndView = new ModelAndView("admin/usr/" + action, "command", usr);
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
-			modelAndView = new ModelAndView("admin/emp/" + action, "command", new Employee());
+			modelAndView = new ModelAndView("admin/usr/" + action, "command", new User());
 		}
 
 		return modelAndView;
 	}
 	
-	@PostMapping("/admin/emp/editsave")
-	public ModelAndView editsave(@ModelAttribute("SpringWeb") Employee emp, ModelMap model) {
+	@PostMapping("/admin/usr/editsave")
+	public ModelAndView editsave(@ModelAttribute("SpringWeb") User usr, ModelMap model) {
 
 		
-		logger.info("emp = " + emp);
+		logger.info("usr = " + usr);
 		
 		ModelAndView modelAndView = null;
 
 		try {
-			employeeService.update(emp.getLogin(), emp.getPassword(), emp.getFirstname(), emp.getLastname(),
-					emp.getSalary(), -1);
+			userService.update(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
+					usr.getCorreo(),usr.getGenero, -1);
 
-			modelAndView = new ModelAndView("redirect:/admin/emp/list");
+			modelAndView = new ModelAndView("redirect:/admin/usr/list");
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
-			modelAndView = new ModelAndView("redirect:/admin/emp/list");
+			modelAndView = new ModelAndView("redirect:/admin/usr/list");
 		}
 
 		return modelAndView;

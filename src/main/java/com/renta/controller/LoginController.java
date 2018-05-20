@@ -55,7 +55,7 @@ public class LoginController {
 		ModelAndView modelAndView = null;
 
 		try {
-			User usr = securityService.validate(user.getLogin(), user.getPassword());
+			User usr = securityService.validate(user.getUsername(), user.getPassword());
 			logger.info(usr.toString());
 			modelAndView = new ModelAndView("redirect:/admin/menu", "command", usr);
 		} catch (LoginException e) {
