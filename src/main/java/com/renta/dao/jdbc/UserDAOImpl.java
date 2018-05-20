@@ -124,7 +124,7 @@ public class UserDAOImpl implements UserDAO{
 			logger.info("Error: " + e.getMessage());
 			throw new DAOException(e.getMessage());
 		}
-		return null;
+		
 	}
 
 	

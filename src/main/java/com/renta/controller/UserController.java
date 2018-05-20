@@ -36,7 +36,7 @@ public class UserController {
 	public String list(@ModelAttribute("SpringWeb") User user, ModelMap model) {
 
 		try {
-			model.addAttribute("user", UserService.findAll());
+			model.addAttribute("user", userService.findAll());
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 			model.addAttribute("message", e.getMessage());
@@ -96,7 +96,7 @@ public class UserController {
 
 		try {
 			userService.update(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
-					usr.getCorreo(),usr.getGenero, -1);
+					usr.getCorreo(),usr.getGenero());
 
 			modelAndView = new ModelAndView("redirect:/admin/usr/list");
 		} catch (Exception e) {
