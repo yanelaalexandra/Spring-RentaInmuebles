@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<title>Login</title>
+<title>Spring MVC CRUD</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -14,16 +12,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="col-md-4">
 				<h4 class="text-center">User Login</h4>
 				<hr>
 				<form:form method="post" action="login">
 					<div class="form-group">
-						<label for="login">Login: </label>
-						<form:input path="login" class="form-control" />
+						<label for="username">Login: </label>
+						<form:input path="username" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label for="password">Password: </label>
@@ -37,6 +34,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
