@@ -11,6 +11,33 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+#navegador{
+background-color: black;
+padding-left: 30px;
+padding-right: 30px;
+font-size: 20px;
+}
+#button{
+background: #1F618D;
+
+}
+.b{
+color: white;
+font-style: bold;
+}
+#button2{
+color: white;
+}
+#pie{
+color: white;
+background: #1F618D;
+font-style: bold;
+font-size: 12px;
+padding: 3px;
+text-align: center;
+}
+</style>
 </head>
 <body>
 <div class="container-fluid">
@@ -58,5 +85,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<div id="pie">Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</div>
+	
 </body>
 </html>
