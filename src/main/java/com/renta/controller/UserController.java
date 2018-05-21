@@ -87,7 +87,6 @@ public class UserController {
 	
 	@GetMapping("/admin/usr/editform/{user_id}")
 	public ModelAndView form(@PathVariable int id_user, ModelMap model) {
-
 		id_user = current_id_user;
 		//logger.info("action = " + action);
 		ModelAndView modelAndView = null;
