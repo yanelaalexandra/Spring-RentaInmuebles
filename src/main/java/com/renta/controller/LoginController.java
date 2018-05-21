@@ -42,6 +42,7 @@ public class LoginController {
 */
 	
 	//@GetMapping("/login")
+	
 	@GetMapping(value={"/", "login"})
 	public ModelAndView preLogin() {
 		User usr = new User();
@@ -64,6 +65,7 @@ public class LoginController {
 			User usr = securityService.validate(user.getUsername(), user.getPassword());
 			logger.info(usr.toString());
 			modelAndView = new ModelAndView("redirect:/admin/menu", "command", usr);
+			
 		} catch (LoginException e) {
 			// TODO Auto-generated catch block
 			model.addAttribute("message", "Usuario y/o clave incorrectos");
@@ -77,42 +79,15 @@ public class LoginController {
 		return modelAndView;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------
+	// Crear Usuario
 	
 	@GetMapping("/register")
-	public ModelAndView register() {	
-		return new ModelAndView("redirect:/admin/usr/createform");
+	public ModelAndView register() {
+		User usr = new User();
+		return new ModelAndView("/admin/usr/createform", "command", usr);
 	}
 	
-	
-	@PostMapping("/register")
-	public ModelAndView register(@ModelAttribute("SpringWeb") User user, ModelMap model)  {
-
-		
-		logger.info("register()");
-		logger.info(user.toString());
-
-		ModelAndView modelAndView = null;
-
-		try {
-				
-			userDAO.create(user.getUsername(), user.getPassword(), user.getNombre(), 
-							user.getApellido(), user.getCorreo(), user.getGenero());
-			
-			User usr = userDAO.finUserByUsername(user.getNombre());
-					
-			modelAndView = new ModelAndView("redirect:/", "command", usr);
-			
-		} catch (DAOException e) {
-			// TODO Auto-generated catch block
-			model.addAttribute("message", "Usuario y/o clave incorrectos");
-			modelAndView = new ModelAndView("login", "command", new User());
-		} catch (EmptyResultException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-
-		return modelAndView;
-	}
 	
 	
 

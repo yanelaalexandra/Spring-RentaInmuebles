@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.renta.model.User;
@@ -112,36 +113,21 @@ public class UserController {
 		return modelAndView;
 	}
 	
+
+	//---------------------------------------------------------------------------------------------------------------
+	// Crear Usuario
 	
-	/*@GetMapping("/admin/usr/createform")
-	public ModelAndView formCreate(@ModelAttribute("SpringWeb") ModelMap model) {
-
-		ModelAndView modelAndView = null;
-
-		try {
-
-			modelAndView = new ModelAndView("redirect:/admin/usr/createform");
-		} catch (Exception e) {
-			model.addAttribute("message", e.getMessage());
-			//modelAndView = new ModelAndView("admin/usr/" + action, "command", new User());
-		}
-
-		return modelAndView;
-	}*/
 	
-	/*@GetMapping("/admin/usr/createform")
+	@GetMapping("/admin/usr/createform")
 	public String formCreate() {
-
-		return "admin/usr/createform";
+		return "/admin/usr/createform";
 	}
 	
-	
-	@PostMapping("/admin/usr/createform")
-	public ModelAndView save(@ModelAttribute("SpringWeb") User usr, ModelMap model) {
 
-		
-		logger.info("usr = " + usr);
-		
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView createform(User usr, ModelMap model) {
+
+				
 		ModelAndView modelAndView = null;
 
 		try {
@@ -155,7 +141,7 @@ public class UserController {
 		}
 
 		return modelAndView;
-	}*/
+	}
 	
 }
 

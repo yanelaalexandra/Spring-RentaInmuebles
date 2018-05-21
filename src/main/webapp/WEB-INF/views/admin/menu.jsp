@@ -17,7 +17,7 @@
 					<tbody>
 						<tr>
 							<td>
-								<a href="<%=request.getContextPath()%>/register"
+								<a href="<%=request.getContextPath()%>/admin/emp/list"
 								class="btn btn-primary"> Manager Employees</a>
 							</td>
 							<td>

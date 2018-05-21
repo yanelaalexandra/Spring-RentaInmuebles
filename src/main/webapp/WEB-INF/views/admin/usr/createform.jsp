@@ -18,7 +18,10 @@
 			<div class="col-md-4">
 				<h4 class="text-center">User Register</h4>
 				<hr>
-				<form:form method="post" action="../createform">
+				<form:form method="post" action="/rentainmuebles/save">
+					
+					<form:hidden path="idusuario" class="form-control"/>
+					
 					<div class="form-group">
 						<label for="username">Username: </label>
 						<form:input path="username" class="form-control" />
@@ -42,8 +45,8 @@
 					
 					<div class="form-group">
 						<label for="genero">Género: </label>
-						 <form:radiobutton path="sex" value="M"/>Masculino
-						<form:radiobutton path="sex" value="F"/>Femenino 
+						 <form:radiobutton path="genero" value="M"/>Masculino
+						<form:radiobutton path="genero" value="F"/>Femenino 
  					</div>
 					<div class="form-group">
 						<input type="submit" value="Register" class="btn btn-success" />
