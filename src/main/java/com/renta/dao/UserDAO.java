@@ -14,7 +14,7 @@ public interface UserDAO {
 
 	void delete(String username) throws DAOException;
 
-	void update(String username, String password, String nombre, String apellido, String correo, String genero) throws DAOException;
+	void update(String username, String password, String nombre, String apellido, String correo, String genero, String descripcion, String tipo_documento, int numero_documento, int telefono, String foto) throws DAOException;
 
 	User finUserByUsername(String Username) throws DAOException, EmptyResultException;
 

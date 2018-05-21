@@ -30,9 +30,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 
-	public void update(String username, String password, String nombre, String apellido, String correo, String genero)
+	public void update(String username, String password, String nombre, String apellido, String correo, String genero, String descripcion, String tipo_documento, int numero_documento, int telefono, String foto)
 			throws DAOException {
-	userDAO.update( username, password, nombre, apellido, correo, genero);
+	userDAO.update( username, password, nombre, apellido, correo, genero, descripcion, tipo_documento, numero_documento,telefono, foto );
 		
 	}
 

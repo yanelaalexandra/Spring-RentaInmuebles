@@ -90,11 +90,11 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	
-	public void update(String username, String password, String nombre, String apellido, String correo, String genero) throws DAOException {
+	public void update(String username, String password, String nombre, String apellido, String correo, String genero, String descripcion, String tipo_documento, int numero_documento, int telefono, String foto) throws DAOException {
 
-		String query = "UPDATE usuario SET password = ?, nombre =?, apellido = ?, correo = ?, genero = ? WHERE username = ?";
+		String query = "UPDATE usuario SET password = ?, nombre =?, apellido = ?, correo = ?, genero = ?, descripcion = ?, tipo_documento = ?, numero_documento= ?, telefono = ?, foto = ? WHERE username = ?";
 
-		Object[] params = new Object[] {  password, nombre, apellido, correo, genero, username};
+		Object[] params = new Object[] {  password, nombre, apellido, correo, genero, username,descripcion, tipo_documento,numero_documento, telefono, foto };
 
 		try {
 			jdbcTemplate.update(query, params);

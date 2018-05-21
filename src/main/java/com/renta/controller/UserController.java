@@ -26,6 +26,7 @@ import com.renta.services.UserService;
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	public static int current_id_user;
 	
 	@Autowired
 	private UserService userService;
@@ -33,8 +34,17 @@ public class UserController {
 	
 	@GetMapping("/admin/menu")
 	public String menu() {
-
+		
+		User usr = new User();
+		current_id_user = usr.getIdusuario();
+		
 		return "/admin/menu";
+	}
+	
+	@GetMapping("/admin/usr/perfil")
+	public String perfil() {
+
+		return "/admin/usr/perfil";
 	}
 	
 	
@@ -72,21 +82,23 @@ public class UserController {
 
 		return modelAndView;
 	}
+	//---------------------------------------------------------------------------------------------------------------
+	// Editar Usuario -- agregar boton o ruta
 	
-	@GetMapping("/admin/usr/{action}/{user_id}")
-	public ModelAndView form(@PathVariable String action, @PathVariable int user_id, ModelMap model) {
+	@GetMapping("/admin/usr/editform/{user_id}")
+	public ModelAndView form(@PathVariable int id_user, ModelMap model) {
 
-		// action = {"editform","deleteform"}
-		logger.info("action = " + action);
+		id_user = current_id_user;
+		//logger.info("action = " + action);
 		ModelAndView modelAndView = null;
 
 		try {
-			User usr = userService.find(user_id);
+			User usr = userService.find(id_user);
 			logger.info(usr.toString());
-			modelAndView = new ModelAndView("admin/usr/" + action, "command", usr);
+			modelAndView = new ModelAndView("admin/usr/editform", "command", usr);
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
-			modelAndView = new ModelAndView("admin/usr/" + action, "command", new User());
+			modelAndView = new ModelAndView("admin/usr/editform", "command", new User());
 		}
 
 		return modelAndView;
@@ -102,12 +114,13 @@ public class UserController {
 
 		try {
 			userService.update(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
-					usr.getCorreo(),usr.getGenero());
+					usr.getCorreo(),usr.getGenero(), usr.getDescripcion(), usr.getTipo_documento(), usr.getNumero_documento(),
+					usr.getTelefono(), usr.getFoto());
 
-			modelAndView = new ModelAndView("redirect:/admin/usr/list");
+			modelAndView = new ModelAndView("redirect:/admin/menu");
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
-			modelAndView = new ModelAndView("redirect:/admin/usr/list");
+			modelAndView = new ModelAndView("redirect:/admin/menu");
 		}
 
 		return modelAndView;
@@ -142,6 +155,10 @@ public class UserController {
 
 		return modelAndView;
 	}
+	
+	
+	
+	
 	
 }
 

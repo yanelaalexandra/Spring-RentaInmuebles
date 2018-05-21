@@ -35,6 +35,9 @@ font-size: 12px;
 padding: 3px;
 text-align: center;
 }
+#inmueblecard{
+text-align: center;
+}
 </style>
 
 </head>
@@ -42,7 +45,7 @@ text-align: center;
 <header>
 <nav class="navbar justify-content-between" id="navegador">
   <a class="nav-link" href="<%=request.getContextPath()%>/admin/menu"><font color="white"><b><h3>Home</h3></b></font></a>
-  <a class="nav-link" href="#"><font color="white"><b>Perfil</b></font></a>
+  <a class="nav-link" href="<%=request.getContextPath()%>/admin/usr/perfil"><font color="white"><b>Perfil</b></font></a>
   <a class="nav-link" href="#"><font color="white"><b>Historial</b></font></a>
   <a class="nav-link" href="#"><font color="white"><b>Nosotros</b></font></a>
   <a class="nav-link" href="<%=request.getContextPath()%>/"><font color="white"><b>Cerrar Sesión</b></font></a>
@@ -88,13 +91,13 @@ text-align: center;
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="" alt="First slide">
+      <img class="d-block w-100" src="http://www.jcmagazine.com/wp-content/uploads/2015/12/inmuebles-surco.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
+      <img class="d-block w-100" src="http://www.gysinmobiliaria.com/upload/thumb/11010220181828koo.jpg" height="660" width="330" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
+      <img class="d-block w-100" src="http://www.hostallascamelias.com.pe/mobile/limaperu/Lima1.jpg"  height="660" width="330" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -107,6 +110,9 @@ text-align: center;
   </a>
 </div>
 
+<br>
+<br>
+
       <!-- Marketing messaging and featurettes
       ================================================== -->
       <!-- Wrap the rest of the page in another container to center all the content. -->
@@ -114,30 +120,33 @@ text-align: center;
       <div class="container marketing">
 
         <!-- Three columns of text below the carousel -->
+        
         <div class="row">
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="http://blog.inmobilia.com/wp-content/uploads/2016/02/beaches-peru.jpg" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <div class="col-lg-4" id="inmueblecard">
+            <img class="rounded-circle" src="http://rudely.com.br/wp-content/uploads/2016/01/home.png" alt="Generic placeholder image" width="140" height="140">
+            <h2>Inmueble 1</h2>
+            <p>Descripción general del inmueble 1</p>
             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <div class="col-lg-4" id="inmueblecard">
+            <img class="rounded-circle" src="http://rudely.com.br/wp-content/uploads/2016/01/home.png" alt="Generic placeholder image" width="140" height="140">
+            <h2>Inmueble 2</h2>
+            <p>Descripción general del inmueble 2</p>
             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <div class="col-lg-4" id="inmueblecard">
+            <img class="rounded-circle" src="http://rudely.com.br/wp-content/uploads/2016/01/home.png" alt="Generic placeholder image" width="140" height="140">
+           <h2>Inmueble 3</h2>
+            <p>Descripción general del inmueble 3</p>         
+             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        </div>
+        <!-- /.row -->
 
-
+</br>
+</br>
         <!-- START THE FEATURETTES -->
-
+	
         <hr class="featurette-divider">
 
         <div class="row featurette">
@@ -146,7 +155,7 @@ text-align: center;
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPkWfHyyeSES97VjX0itMSm6_pQE6RgriwcZ5Cxvj6z1Dkq9Pe" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPkWfHyyeSES97VjX0itMSm6_pQE6RgriwcZ5Cxvj6z1Dkq9Pe" alt="Generic placeholder image" width="250" height="250">
           </div>
         </div>
 
@@ -158,7 +167,7 @@ text-align: center;
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
           </div>
           <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="http://www.primerolafamilia.com.ar/images/familia-3.png" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" src="http://www.primerolafamilia.com.ar/images/familia-3.png" alt="Generic placeholder image" width="250" height="250">
           </div>
         </div>
 
@@ -170,11 +179,12 @@ text-align: center;
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="http://emprendete.sv/wp-content/uploads/2017/06/cash_icon-icons.com_51090-300x300.png" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" src="http://emprendete.sv/wp-content/uploads/2017/06/cash_icon-icons.com_51090-300x300.png" alt="Generic placeholder image" width="250" height="250">
           </div>
         </div>
 
         <hr class="featurette-divider">
+        
 
         <!-- /END THE FEATURETTES -->
 
