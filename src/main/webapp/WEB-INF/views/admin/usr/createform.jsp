@@ -37,13 +37,25 @@ font-size: 12px;
 padding: 3px;
 text-align: center;
 }
+#registro{
+background: #148F77;
+color: white;
+font-size: 50px;
+text-align: center;
+font-style: bold;
+}
 </style>
 </head>
 <body>
+<div class="jumbotron" id="registro">
+ User Register</div>
+
 <div class="container-fluid">
 		<div class="row-fluid">
-			<div class="col-md-4">
-				<h4 class="text-center">User Register</h4>
+		<div class="col-md-5" ></div>
+	
+			<div class="col-md-2" >
+		
 				<hr>
 				<form:form method="post" action="/rentainmuebles/save">
 					
@@ -83,9 +95,11 @@ text-align: center;
 					Cancelar</a>
 				</form:form>
 			</div>
+				<div class="col-md-5" ></div>
 		</div>
 	</div>
-	
+	<br>
+	<br>
 	<div id="pie">Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</div>
 	
 </body>

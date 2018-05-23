@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.renta.model.Inmueble;
 import com.renta.model.User;
+import com.renta.services.InmuebleService;
 import com.renta.services.UserService;
    
 /**
@@ -26,33 +28,23 @@ import com.renta.services.UserService;
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	public static int current_id_user;
 	
 	@Autowired
-	private UserService userService;
+	private InmuebleService inmuebleService;
 	
 	
 	@GetMapping("/admin/menu")
 	public String menu() {
-		
-		User usr = new User();
-		current_id_user = usr.getIdusuario();
-		
-		return "/admin/menu";
-	}
-	
-	@GetMapping("/admin/usr/perfil")
-	public String perfil() {
 
-		return "/admin/usr/perfil";
+		return "/admin/menu";
 	}
 	
 	
 	@GetMapping("/admin/usr/list")
-	public String list(@ModelAttribute("SpringWeb") User user, ModelMap model) {
+	public String list(@ModelAttribute("SpringWeb") Inmueble inmueble, ModelMap model) {
 
 		try {
-			model.addAttribute("user", userService.findAll());
+			model.addAttribute("inmueble", inmuebleService.findAll());
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 			model.addAttribute("message", e.getMessage());
@@ -67,59 +59,58 @@ public class UserController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@GetMapping("/{user_id}")
-	public ModelAndView home(@PathVariable int idusuario, ModelMap model) {
+	public ModelAndView home(@PathVariable int idinmueble, ModelMap model) {
 
 		ModelAndView modelAndView = null;
-		User usr = new User();
+		Inmueble inm = new Inmueble();
 		try {
-			usr = userService.find(idusuario);
-			logger.info(usr.toString());
+			inm = inmuebleService.find(idinmueble);
+			logger.info(inm.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		modelAndView = new ModelAndView("home", "command", usr);
+		modelAndView = new ModelAndView("home", "command", inm);
 
 		return modelAndView;
 	}
-	//---------------------------------------------------------------------------------------------------------------
-	// Editar Usuario -- agregar boton o ruta
 	
-	@GetMapping("/admin/usr/editform/{user_id}")
-	public ModelAndView form(@PathVariable int id_user, ModelMap model) {
-		id_user = current_id_user;
-		//logger.info("action = " + action);
+	@GetMapping("/admin/usr/{action}/{user_id}")
+	public ModelAndView form(@PathVariable String action, @PathVariable int idinmueble, ModelMap model) {
+
+		// action = {"editform","deleteform"}
+		logger.info("action = " + action);
 		ModelAndView modelAndView = null;
 
 		try {
-			User usr = userService.find(id_user);
-			logger.info(usr.toString());
-			modelAndView = new ModelAndView("admin/usr/editform", "command", usr);
+			Inmueble inm = inmuebleService.find(idinmueble);
+			logger.info(inm.toString());
+			modelAndView = new ModelAndView("admin/usr/" + action, "command", inm);
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
-			modelAndView = new ModelAndView("admin/usr/editform", "command", new User());
+			modelAndView = new ModelAndView("admin/usr/" + action, "command", new Inmueble());
 		}
 
 		return modelAndView;
 	}
 	
 	@PostMapping("/admin/usr/editsave")
-	public ModelAndView editsave(@ModelAttribute("SpringWeb") User usr, ModelMap model) {
+	public ModelAndView editsave(@ModelAttribute("SpringWeb") Inmueble inm, ModelMap model) {
 
 		
-		logger.info("usr = " + usr);
+		logger.info("inm = " + inm);
 		
 		ModelAndView modelAndView = null;
 
 		try {
-			userService.update(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
-					usr.getCorreo(),usr.getGenero(), usr.getDescripcion(), usr.getTipo_documento(), usr.getNumero_documento(),
-					usr.getTelefono(), usr.getFoto());
+			inmuebleService.update(inm.getDireccion(), inm.getCoordenadas_dic(), inm.getFoto(), inm.getDescripcion(),
+					inm.getTipo_costo(),inm.getCosto(), inm.getCapacidad_max(), inm.getTipo_inmueble(), inm.getEstado(),
+					inm.getUsuarios_idusuario(), inm.getRanking_idranking());
 
-			modelAndView = new ModelAndView("redirect:/admin/menu");
+			modelAndView = new ModelAndView("redirect:/admin/usr/list");
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
-			modelAndView = new ModelAndView("redirect:/admin/menu");
+			modelAndView = new ModelAndView("redirect:/admin/usr/list");
 		}
 
 		return modelAndView;
@@ -137,14 +128,15 @@ public class UserController {
 	
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView createform(User usr, ModelMap model) {
+	public ModelAndView createform(Inmueble inm, ModelMap model) {
 
 				
 		ModelAndView modelAndView = null;
 
 		try {
-			userService.create(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
-					usr.getCorreo(),usr.getGenero());
+			inmuebleService.create(inm.getDireccion(), inm.getCoordenadas_dic(), inm.getFoto(), inm.getDescripcion(),
+					inm.getTipo_costo(),inm.getCosto(), inm.getCapacidad_max(), inm.getTipo_inmueble(), inm.getEstado(),
+					inm.getUsuarios_idusuario(), inm.getRanking_idranking());
 
 			modelAndView = new ModelAndView("redirect:/");
 		} catch (Exception e) {
@@ -154,10 +146,6 @@ public class UserController {
 
 		return modelAndView;
 	}
-	
-	
-	
-	
 	
 }
 
