@@ -66,7 +66,7 @@ public class UserController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@GetMapping("/{user_id}")
+	@GetMapping("/{idusuario}")
 	public ModelAndView home(@PathVariable int idusuario, ModelMap model) {
 
 		ModelAndView modelAndView = null;
@@ -82,17 +82,18 @@ public class UserController {
 
 		return modelAndView;
 	}
+	
 	//---------------------------------------------------------------------------------------------------------------
 	// Editar Usuario -- agregar boton o ruta
 	
-	@GetMapping("/admin/usr/editform/{user_id}")
-	public ModelAndView form(@PathVariable int id_user, ModelMap model) {
-		id_user = current_id_user;
+	@GetMapping("/admin/usr/editform")
+	public ModelAndView form(@PathVariable int idusuario, ModelMap model) {
+		idusuario = current_id_user;
 		//logger.info("action = " + action);
 		ModelAndView modelAndView = null;
 
 		try {
-			User usr = userService.find(id_user);
+			User usr = userService.find(LoginController.id_currentUSER);
 			logger.info(usr.toString());
 			modelAndView = new ModelAndView("admin/usr/editform", "command", usr);
 		} catch (Exception e) {

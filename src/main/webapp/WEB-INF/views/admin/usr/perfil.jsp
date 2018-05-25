@@ -55,5 +55,8 @@ text-align: center;
 
 
 
+<a href="<%=request.getContextPath()%>/admin/usr/editform"
+								class="btn btn-primary"> Editar Usuario</a>
+
 </body>
 </html>

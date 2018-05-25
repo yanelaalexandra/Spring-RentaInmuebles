@@ -26,9 +26,10 @@ public class UserDAOImpl implements UserDAO{
 
 
 	public User findUser(int idusuario) throws DAOException, EmptyResultException {
-
+		
+		
 		String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero "
-				+ " FROM usuario WHERE user_id = ?";
+				+ " FROM usuarios WHERE idusuario = ?";
 
 		Object[] params = new Object[] { idusuario };
 
@@ -51,7 +52,7 @@ public class UserDAOImpl implements UserDAO{
 	
 	public void create(String username, String password, String nombre, String apellido, String correo, String genero) throws DAOException {
 
-		String query = "INSERT INTO usuario (username, password, nombre, apellido, correo, genero)  VALUES ( ?,?,?,?,?,? )";
+		String query = "INSERT INTO usuarios (username, password, nombre, apellido, correo, genero)  VALUES ( ?,?,?,?,?,? )";
 
 		Object[] params = new Object[] { username, password, nombre, apellido, correo, genero };
 
@@ -61,7 +62,7 @@ public class UserDAOImpl implements UserDAO{
 			// create
 			jdbcTemplate.update(query, params);
 			// search
-			usr = this.finUserByUsername(username);
+			usr = this.finUserByUsername(username, password);
 
 		} catch (EmptyResultException e) {
 			// TODO Auto-generated catch block
@@ -77,7 +78,7 @@ public class UserDAOImpl implements UserDAO{
 	
 	public void delete(String username) throws DAOException {
 
-		String query = "DELETE FROM  usuario WHERE username = ? ";
+		String query = "DELETE FROM  usuarios WHERE username = ? ";
 
 		Object[] params = new Object[] { username};
 
@@ -92,7 +93,7 @@ public class UserDAOImpl implements UserDAO{
 	
 	public void update(String username, String password, String nombre, String apellido, String correo, String genero, String descripcion, String tipo_documento, int numero_documento, int telefono, String foto) throws DAOException {
 
-		String query = "UPDATE usuario SET password = ?, nombre =?, apellido = ?, correo = ?, genero = ?, descripcion = ?, tipo_documento = ?, numero_documento= ?, telefono = ?, foto = ? WHERE username = ?";
+		String query = "UPDATE usuarios SET password = ?, nombre =?, apellido = ?, correo = ?, genero = ?, descripcion = ?, tipo_documento = ?, numero_documento= ?, telefono = ?, foto = ? WHERE username = ?";
 
 		Object[] params = new Object[] {  password, nombre, apellido, correo, genero, username,descripcion, tipo_documento,numero_documento, telefono, foto };
 
@@ -106,11 +107,11 @@ public class UserDAOImpl implements UserDAO{
 
 
 	
-	public User finUserByUsername(String Username) throws DAOException, EmptyResultException {
+	public User finUserByUsername(String username, String password) throws DAOException, EmptyResultException {
 		String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero "
-				+ " FROM usuario WHERE username = ? ";
+				+ " FROM usuarios WHERE username = ? ";
 
-		Object[] params = new Object[] { Username };
+		Object[] params = new Object[] { username, password};
 
 		try {
 
@@ -128,10 +129,9 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	
-	
 	public List<User> findAllUsers() throws DAOException, EmptyResultException {
 
-		String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero FROM usuario ";
+		String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero FROM usuarios ";
 
 		try {
 
@@ -150,7 +150,7 @@ public class UserDAOImpl implements UserDAO{
 public List<User> findUserByNombre(String nombre) throws DAOException, EmptyResultException {
 		
 	String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero "
-				+ " FROM usuario WHERE upper(nombre) like upper(?) ";
+				+ " FROM usuarios WHERE upper(nombre) like upper(?) ";
 
 		Object[] params = new Object[] { "%" + nombre + "%" };
 
@@ -178,7 +178,7 @@ public List<User> findUserByNombre(String nombre) throws DAOException, EmptyResu
 		}
 	
 		String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero "
-				+ " FROM usuario WHERE username=? AND password=?";
+				+ " FROM usuarios WHERE username=? AND password=?";
 	
 		Object[] params = new Object[] { username, password };
 	
@@ -198,6 +198,30 @@ public List<User> findUserByNombre(String nombre) throws DAOException, EmptyResu
 	}
 
 
+
+	public User ConsultaUser(String username, String password) throws DAOException,EmptyResultException {
+		String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero "
+				+ " FROM usuarios WHERE username = ? AND password =? ";
+
+		Object[] params = new Object[] { username, password};
+
+		try {
+
+			User user = jdbcTemplate.queryForObject(query, params, new UserMapper());
+			//
+			return user;
+
+		} catch (EmptyResultDataAccessException e) {
+			throw new EmptyResultException();
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
+		
+	}
+
+
+	 
 
 	
 

@@ -23,6 +23,8 @@ import com.renta.services.SecurityService;
  */
 @Controller
 public class LoginController {
+	
+	public static int id_currentUSER=0;
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
