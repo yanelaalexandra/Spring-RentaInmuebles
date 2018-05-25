@@ -36,19 +36,32 @@ font-size: 12px;
 padding: 3px;
 text-align: center;
 }
+#titulo{
+font-size: 40px;
+text-align: center;
+}
+#formulario{
+text-align: center;
+}
 </style>
 </head>
 <body>
+<div id="titulo" class="jumbotron"><br><img src="http://download.seaicons.com/icons/icons8/windows-8/512/User-Interface-Login-icon.png" height="150" width="150">
+<br>
+ User Login</div>
+	
+
 	<div class="container-fluid">
 		<div class="row-fluid">
+		<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<h4 class="text-center">User Login</h4>
 				<hr>
 				<form:form method="post" action="login">
 					<div class="form-group">
 						<label for="username">Login: </label>
 						<form:input path="username" class="form-control" />
 					</div>
+					<br>
 					<div class="form-group">
 						<label for="password">Password: </label>
 						<form:password path="password" class="form-control" />
@@ -61,10 +74,17 @@ text-align: center;
 					class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i>
 					Register</a>
 				</form:form>
+				<br>
 				<font color="red">${message}</font>
 			</div>
+			<br>
+			<br>
+			<div class="col-md-4"></div>
 		</div>
 	</div>
+<br>
+	
+	
 	
 	<div id="pie">Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</div>
 </body>

@@ -26,6 +26,10 @@ background: #1F618D;
 color: white;
 font-style: bold;
 }
+#titulo{
+font-size: 40px;
+text-align: center;
+}
 #button2{
 color: white;
 }
@@ -37,13 +41,20 @@ font-size: 12px;
 padding: 3px;
 text-align: center;
 }
+
+
 </style>
 </head>
 <body>
+
+<div id="titulo" class="jumbotron"><br><img src="https://png.icons8.com/metro/1600/add-user-male.png" height="150" width="150">
+<br>
+ User Register</div>
+
 <div class="container-fluid">
 		<div class="row-fluid">
+		<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<h4 class="text-center">User Register</h4>
 				<hr>
 				<form:form method="post" action="/rentainmuebles/save">
 					
@@ -83,6 +94,7 @@ text-align: center;
 					Cancelar</a>
 				</form:form>
 			</div>
+			<div class="col-md-4"></div>
 		</div>
 	</div>
 	

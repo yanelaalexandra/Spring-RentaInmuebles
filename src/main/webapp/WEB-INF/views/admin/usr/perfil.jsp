@@ -56,12 +56,47 @@ text-align: center;
   </form>
 </nav></header>
 
-<h3>Bienvenido usuario <c:out value="${user.nombre}"></c:out></h3>
+<div class="row">
+<div class="col-4"></div>
+<div class="col-4">
 
-<c:out value="${user.username}"></c:out>
+<center><img src="https://d32ogoqmya1dw8.cloudfront.net/images/serc/empty_user_icon_256.v2.png">
+<h3>Bienvenido usuario <c:out value="${user.nombre}"></c:out></h3></center>
+<br>
+<h5>Username</h5>
+<div class="alert alert-dark" role="alert">
+  <c:out value="${user.username}"></c:out>
+</div>
+<h5>Nombre</h5>
+<div class="alert alert-dark" role="alert">
+  <c:out value="${user.nombre}"></c:out>
+</div>
+<h5>Apellido</h5>
+<div class="alert alert-dark" role="alert">
+  <c:out value="${user.apellido}"></c:out>
+</div>
+<h5>Correo</h5>
+<div class="alert alert-dark" role="alert">
+  <c:out value="${user.correo}"></c:out>
+</div>
+<h5>Género</h5>
+<div class="alert alert-dark" role="alert">
+  <c:out value="${user.genero}"></c:out>
+</div>
+<br>
 
-<a href="<%=request.getContextPath()%>/admin/usr/editform"
-								class="btn btn-primary"> Editar Usuario</a>
+<center><a href="<%=request.getContextPath()%>/admin/usr/editform"
+								class="btn btn-primary"> Editar Usuario</a></center>
+
+</div>
+<div class="col-4"></div>
+</div>
+
+
+
+								<br>
+								<br>
+<div id="pie">Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</div>
 
 </body>
 </html>
