@@ -1,7 +1,10 @@
 package com.renta.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,15 +27,18 @@ import com.renta.services.SecurityService;
 @Controller
 public class LoginController {
 	
-	public static int id_currentUSER=0;
+	private static final Logger logger = Logger.getLogger(LoginController.class);
 
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
+	private static final Logger LOGGER = LogManager.getLogger(LoginController.class.getName());
+	
 	@Autowired
 	private SecurityService securityService;
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private HttpSession httpSession;
 	
 
 /*	
@@ -47,6 +53,9 @@ public class LoginController {
 	
 	@GetMapping(value={"/", "login"})
 	public ModelAndView preLogin() {
+		logger.info("preLogin()");
+		LOGGER.info("preLogin()");
+		
 		User usr = new User();
 		return new ModelAndView("login", "command", usr);
 	}
@@ -55,7 +64,7 @@ public class LoginController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@PostMapping("/login")
-	public ModelAndView login(@ModelAttribute("SpringWeb") User user, ModelMap model) {
+	public ModelAndView login(@ModelAttribute("SpringWeb") User user, ModelMap model, HttpServletRequest request) {
 
 		
 		logger.info("login()");
@@ -66,6 +75,12 @@ public class LoginController {
 		try {
 			User usr = securityService.validate(user.getUsername(), user.getPassword());
 			logger.info(usr.toString());
+			logger.info("mesasge");
+			logger.info(httpSession);
+			
+			httpSession.setAttribute("user", usr);
+			LOGGER.info("user 2" + usr);
+			
 			modelAndView = new ModelAndView("redirect:/admin/menu", "command", usr);
 			
 		} catch (LoginException e) {
@@ -76,11 +91,12 @@ public class LoginController {
 			// TODO Auto-generated catch block
 			model.addAttribute("message", e.getMessage());
 			modelAndView = new ModelAndView("login", "command", new User());
+		} catch (Throwable e) {
+			logger.error(e, e);
 		}
 
 		return modelAndView;
 	}
-	
 	//---------------------------------------------------------------------------------------------------------------
 	// Crear Usuario
 	

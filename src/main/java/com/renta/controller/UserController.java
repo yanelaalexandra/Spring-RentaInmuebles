@@ -3,8 +3,10 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,27 +27,41 @@ import com.renta.services.UserService;
 @Controller
 public class UserController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+private static final Logger logger = Logger.getLogger(UserController.class);
+	
+	private static final Logger LOGGER = LogManager.getLogger(LoginController.class.getName());
+	
 	public static int current_id_user;
 	
 	@Autowired
 	private UserService userService;
 	
 	
+	@Autowired
+	private HttpSession httpSession;
+	
+	
 	@GetMapping("/admin/menu")
 	public String menu() {
 		
 		User usr = new User();
-		current_id_user = usr.getIdusuario();
-		
 		return "/admin/menu";
 	}
 	
+	
+	
 	@GetMapping("/admin/usr/perfil")
-	public String perfil() {
+	public String perfil(ModelMap model) {
 
+		User user = (User)httpSession.getAttribute("user");
+		LOGGER.info("user:" + user);
+		System.out.println("user: " + user);
+		
+		model.addAttribute("user", user);
+		
 		return "/admin/usr/perfil";
 	}
+	
 	
 	
 	@GetMapping("/admin/usr/list")
@@ -93,7 +109,7 @@ public class UserController {
 		ModelAndView modelAndView = null;
 
 		try {
-			User usr = userService.find(LoginController.id_currentUSER);
+			User usr = userService.find(idusuario);
 			logger.info(usr.toString());
 			modelAndView = new ModelAndView("admin/usr/editform", "command", usr);
 		} catch (Exception e) {

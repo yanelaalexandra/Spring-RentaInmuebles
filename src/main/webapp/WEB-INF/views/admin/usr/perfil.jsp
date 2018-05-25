@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,9 +43,10 @@ text-align: center;
 
 <header>
 <nav class="navbar justify-content-between" id="navegador">
-  <a class="nav-link" href="<%=request.getContextPath()%>/admin/menu"><font color="white"><b><h3>Home</h3></b></font></a>
+ <a class="nav-link" href="<%=request.getContextPath()%>/admin/menu"><font color="white"><b><h3>Home</h3></b></font></a>
   <a class="nav-link" href="<%=request.getContextPath()%>/admin/usr/perfil"><font color="white"><b>Perfil</b></font></a>
   <a class="nav-link" href="#"><font color="white"><b>Historial</b></font></a>
+    <a class="nav-link" href="<%=request.getContextPath()%>/admin/usr/list"><font color="white"><b>Registrar Inmueble</b></font></a>
   <a class="nav-link" href="#"><font color="white"><b>Nosotros</b></font></a>
   <a class="nav-link" href="<%=request.getContextPath()%>/"><font color="white"><b>Cerrar Sesión</b></font></a>
   
@@ -53,7 +56,9 @@ text-align: center;
   </form>
 </nav></header>
 
+<h3>Bienvenido usuario <c:out value="${user.nombre}"></c:out></h3>
 
+<c:out value="${user.username}"></c:out>
 
 <a href="<%=request.getContextPath()%>/admin/usr/editform"
 								class="btn btn-primary"> Editar Usuario</a>

@@ -18,7 +18,6 @@ font-size: 20px;
 }
 #button{
 background: #1F618D;
-
 }
 .b{
 color: white;
@@ -47,6 +46,7 @@ text-align: center;
   <a class="nav-link" href="<%=request.getContextPath()%>/admin/menu"><font color="white"><b><h3>Home</h3></b></font></a>
   <a class="nav-link" href="<%=request.getContextPath()%>/admin/usr/perfil"><font color="white"><b>Perfil</b></font></a>
   <a class="nav-link" href="#"><font color="white"><b>Historial</b></font></a>
+    <a class="nav-link" href="<%=request.getContextPath()%>/admin/usr/list"><font color="white"><b>Registrar Inmueble</b></font></a>
   <a class="nav-link" href="#"><font color="white"><b>Nosotros</b></font></a>
   <a class="nav-link" href="<%=request.getContextPath()%>/"><font color="white"><b>Cerrar Sesión</b></font></a>
   
@@ -151,8 +151,9 @@ text-align: center;
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <br>
+            <h2 class="featurette-heading">Casas y departamentos cómodos y accesibles<span class="text-muted"></span></h2>
+            <p class="lead">Podrás encontrar diferentes casa y departamentos asi tambien como cuartos individuales, son accesibles y viables para diferentes usuarios.</p>
           </div>
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPkWfHyyeSES97VjX0itMSm6_pQE6RgriwcZ5Cxvj6z1Dkq9Pe" alt="Generic placeholder image" width="250" height="250">
@@ -163,8 +164,9 @@ text-align: center;
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <br>
+            <h2 class="featurette-heading">Inmuebles familiares.<span class="text-muted"></span></h2>
+            <p class="lead">Puedes encontrar inmuebles para tu familia y pasar un momento agradable sin la necesidad de tomarte mucho tiempo para alquilar una casa.</p>
           </div>
           <div class="col-md-5 order-md-1">
             <img class="featurette-image img-fluid mx-auto" src="http://www.primerolafamilia.com.ar/images/familia-3.png" alt="Generic placeholder image" width="250" height="250">
@@ -175,8 +177,10 @@ text-align: center;
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <br>
+          <br>
+            <h2 class="featurette-heading">Precios generosos.<span class="text-muted"></span></h2>
+            <p class="lead">Mostramos diferentes precios para todo tipo de clientes y los pagos diarios, semanales y mensuales del alquiler.</p>
           </div>
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" src="http://emprendete.sv/wp-content/uploads/2017/06/cash_icon-icons.com_51090-300x300.png" alt="Generic placeholder image" width="250" height="250">
@@ -212,3 +216,5 @@ text-align: center;
 </body>
 </body>
 </html>
+
+
