@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.renta.model.Inmueble;
 import com.renta.model.User;
+import com.renta.services.InmuebleService;
 import com.renta.services.UserService;
    
 /**
@@ -40,6 +43,12 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
 	private HttpSession httpSession;
 	
+	@Autowired
+	private InmuebleService inmuebleService;
+
+	@Autowired
+	private ApplicationContext context;
+	
 	
 	@GetMapping("/admin/menu")
 	public String menu() {
@@ -51,13 +60,17 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 	
 	
 	@GetMapping("/admin/usr/perfil")
-	public String perfil(ModelMap model) {
+	public String perfil(ModelMap model) throws Exception {
 
 		User user = (User)httpSession.getAttribute("user");
-		LOGGER.info("user:" + user);
-		System.out.println("user: " + user);
+		int id = user.getIdusuario();
 		
-		model.addAttribute("user", user);
+		User usr = userService.find(id);
+		
+		LOGGER.info("user:" + user);
+		System.out.println("user: " + usr);
+		
+		model.addAttribute("user", usr);
 		
 		return "/admin/usr/perfil";
 	}
@@ -65,10 +78,10 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 	
 	
 	@GetMapping("/admin/usr/list")
-	public String list(@ModelAttribute("SpringWeb") User user, ModelMap model) {
+	public String list(@ModelAttribute("inmueble") Inmueble inmueble, ModelMap model) { //list.jsp
 
 		try {
-			model.addAttribute("user", userService.findAll());
+			model.addAttribute("inmuebles", inmuebleService.findAll());
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 			model.addAttribute("message", e.getMessage());
@@ -102,14 +115,18 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 	//---------------------------------------------------------------------------------------------------------------
 	// Editar Usuario -- agregar boton o ruta
 	
-	@GetMapping("/admin/usr/editform")
-	public ModelAndView form(@PathVariable int idusuario, ModelMap model) {
-		idusuario = current_id_user;
+	@GetMapping("/admin/usr/editform/")
+	public ModelAndView form(ModelMap model) {		
 		//logger.info("action = " + action);
 		ModelAndView modelAndView = null;
-
+	
+			
 		try {
-			User usr = userService.find(idusuario);
+			
+			User user = (User)httpSession.getAttribute("user");
+			User usr = userService.find(user.getIdusuario());
+			
+			//User usr = userService.find(idusuario);
 			logger.info(usr.toString());
 			modelAndView = new ModelAndView("admin/usr/editform", "command", usr);
 		} catch (Exception e) {
@@ -119,19 +136,24 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 
 		return modelAndView;
 	}
-	
-	@PostMapping("/admin/usr/editsave")
+	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
 	public ModelAndView editsave(@ModelAttribute("SpringWeb") User usr, ModelMap model) {
 
+
+		/*User user = (User)httpSession.getAttribute("user");
+		LOGGER.info("user:" + user);
+		System.out.println("user: " + user);
 		
-		logger.info("usr = " + usr);
+		model.addAttribute("user", user);
+		logger.info("usr = " + usr);*/
+		
 		
 		ModelAndView modelAndView = null;
 
 		try {
-			userService.update(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
-					usr.getCorreo(),usr.getGenero(), usr.getDescripcion(), usr.getTipo_documento(), usr.getNumero_documento(),
-					usr.getTelefono(), usr.getFoto());
+			userService.update(usr.getUsername(), usr.getNombre(), usr.getApellido(),
+					usr.getCorreo(),usr.getGenero(), usr.getDescripcion(), 
+					usr.getTelefono());
 
 			modelAndView = new ModelAndView("redirect:/admin/menu");
 		} catch (Exception e) {

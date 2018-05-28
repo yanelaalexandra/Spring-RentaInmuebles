@@ -15,7 +15,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
 	<context:annotation-config />
- 	<context:component-scan base-package="com.renta.*" />
+ 	<context:component-scan base-package="com.renta" />
  	
 	<mvc:annotation-driven /> 
 	
@@ -30,9 +30,9 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/renta_inmuebles" />
+		<property name="url" value="jdbc:mysql://localhost:3306/renta-inmueble" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="rodrigoman12" />
 	</bean>
 	
 	

@@ -11,6 +11,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
 <style>
 #navegador{
 background-color: black;
@@ -27,8 +28,10 @@ color: white;
 font-style: bold;
 }
 #titulo{
-font-size: 40px;
+font-size: 55px;
 text-align: center;
+background: #148F77;
+font-family: 'Passion One', cursive;
 }
 #button2{
 color: white;
@@ -61,37 +64,39 @@ text-align: center;
 					<form:hidden path="idusuario" class="form-control"/>
 					
 					<div class="form-group">
-						<label for="username">Username: </label>
+						<label for="username"><h4>Username: </h4></label>
 						<form:input path="username" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="password">Password: </label>
+						<label for="password"><h4>Password: </h4></label>
 						<form:password path="password" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="nombre">Nombre: </label>
+						<label for="nombre"><h4>Nombre: </h4></label>
 						<form:input path="nombre" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="apellido">Apellido: </label>
+						<label for="apellido"><h4>Apellido: </h4></label>
 						<form:input path="apellido" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="correo">Correo: </label>
+						<label for="correo"><h4>Correo: </h4></label>
 						<form:input path="correo" class="form-control" />
 					</div>
 					
 					<div class="form-group">
-						<label for="genero">Género: </label>
+						<label for="genero"><h4>Género: </h4></label>
 						 <form:radiobutton path="genero" value="M"/>Masculino
 						<form:radiobutton path="genero" value="F"/>Femenino 
  					</div>
+ 					<center>
 					<div class="form-group">
 						<input type="submit" value="Register" class="btn btn-success" />
 					</div>
+					<br>
 					<a href="<%=request.getContextPath()%>/"
 					class="btn btn-danger"><i class="glyphicon glyphicon-arrow-left"></i>
-					Cancelar</a>
+					Cancelar</a></center>
 				</form:form>
 			</div>
 			<div class="col-md-4"></div>

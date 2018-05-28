@@ -2,15 +2,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Crear usuario</title>
+<title>Editar usuario</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
 <style>
 #navegador{
 background-color: black;
@@ -40,22 +39,38 @@ text-align: center;
 </style>
 </head>
 <body>
+
+<header>
+<nav class="navbar justify-content-between" id="navegador">
+  <a class="nav-link" href="<%=request.getContextPath()%>/admin/menu"><font color="white"><b><h3>Home</h3></b></font></a>
+  <a class="nav-link" href="<%=request.getContextPath()%>/admin/usr/perfil"><font color="white"><b>Perfil</b></font></a>
+  <a class="nav-link" href="#"><font color="white"><b>Historial</b></font></a>
+    <a class="nav-link" href="<%=request.getContextPath()%>/admin/usr/list"><font color="white"><b>Registrar Inmueble</b></font></a>
+  <a class="nav-link" href="#"><font color="white"><b>Nosotros</b></font></a>
+  <a class="nav-link" href="<%=request.getContextPath()%>/"><font color="white"><b>Cerrar Sesión</b></font></a>
+  
+  <form class="form-inline">
+    <input class="form-control mr-sm-3" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn  my-0 my-sm-0" type="submit" id="button"><font color="white"><b>Search</b></font></button>
+  </form>
+</nav></header>
+
+
 <div class="container-fluid">
-		<div class="row-fluid">
+		<div class="row">
+		<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<h4 class="text-center">User Edit</h4>
+			<br>
+				<center><img src="https://png.icons8.com/metro/1600/edit-user-male.png" width="200" height="200">
+<h3>Editar usuario </h3></center>
 				<hr>
-				<form:form method="post" action="/rentainmuebles/save">
+				<form:form method="post" action="/rentainmuebles/editsave">
 					
 					<form:hidden path="idusuario" class="form-control"/>
 					
 					<div class="form-group">
 						<label for="username">Username: </label>
-						<form:input path="username" class="form-control" readonly="true" />
-					</div>
-					<div class="form-group">
-						<label for="password">Password: </label>
-						<form:password path="password" class="form-control" />
+						<form:input path="username" class="form-control"  />
 					</div>
 					<div class="form-group">
 						<label for="nombre">Nombre: </label>
@@ -78,38 +93,27 @@ text-align: center;
 					
  					<div class="form-group">
 						<label for="genero">Descripcion: </label>
-						 <form:input path="Descripcion" class="form-control" />
- 					</div>
- 					
- 					<div class="form-group">
-						<label for="genero">Tipo Documento: </label>
-						 <form:input path="tipo_documento" class="form-control" />
+						 <form:textarea path="Descripcion" class="form-control" />
  					</div>
  								
- 					<div class="form-group">
-						<label for="genero">Numero Documento: </label>
-						 <form:input path="numero_documento" class="form-control" />
- 					</div>
- 					
+ 					 					
  					<div class="form-group">
 						<label for="genero">Telefono: </label>
-						 <form:input path="telefono" class="form-control" />
+						 <form:input path="telefono" class="form-control"/>
  					</div>
- 					
- 					<div class="form-group">
-						<label for="genero">Foto: </label>
-						 <form:input path="foto" class="form-control" />
- 					</div>
- 					
- 										
+ 					 					
+ 					<center>			
 					<div class="form-group">
 						<input type="submit" value="Save Changes" class="btn btn-success" />
 					</div>
-					<a href="<%=request.getContextPath()%>/admin/usr/editsave"
+					<br>
+					<a href="<%=request.getContextPath()%>/admin/usr/perfil"
 					class="btn btn-danger"><i class="glyphicon glyphicon-arrow-left"></i>
 					Cancelar</a>
+					</center>
 				</form:form>
 			</div>
+			<div class="col-md-4"></div>
 		</div>
 	</div>
 	
