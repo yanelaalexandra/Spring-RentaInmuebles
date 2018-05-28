@@ -10,6 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
 <style>
 #navegador{
 background-color: black;
@@ -37,8 +38,10 @@ padding: 3px;
 text-align: center;
 }
 #titulo{
-font-size: 40px;
+font-size: 55px;
 text-align: center;
+background: #148F77;
+font-family: 'Passion One', cursive;
 }
 #formulario{
 text-align: center;
@@ -46,9 +49,11 @@ text-align: center;
 </style>
 </head>
 <body>
-<div id="titulo" class="jumbotron"><br><img src="http://download.seaicons.com/icons/icons8/windows-8/512/User-Interface-Login-icon.png" height="150" width="150">
+<div id="titulo" class="jumbotron"><br><img src="http://static.tumblr.com/9525478e941a1e6e1890feb052dc8390/slqhnp0/JB8mm528u/tumblr_static_ml_logo.png" height="200" width="200">
 <br>
- User Login</div>
+ 
+ User Login
+</div>
 	
 
 	<div class="container-fluid">
@@ -58,21 +63,29 @@ text-align: center;
 				<hr>
 				<form:form method="post" action="login">
 					<div class="form-group">
-						<label for="username">Login: </label>
+						<label for="username"><h4>Login: </h4></label>
 						<form:input path="username" class="form-control" />
 					</div>
 					<br>
 					<div class="form-group">
-						<label for="password">Password: </label>
+						<label for="password"><h4>Password: </h4></label>
 						<form:password path="password" class="form-control" />
 					</div>
+					<br>
+					
+					<center>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn btn-success"/>
 						
 					</div>
+					
+					<br>
+					
 					<a href="<%=request.getContextPath()%>/register"
 					class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i>
 					Register</a>
+				</center>
+					
 				</form:form>
 				<br>
 				<font color="red">${message}</font>

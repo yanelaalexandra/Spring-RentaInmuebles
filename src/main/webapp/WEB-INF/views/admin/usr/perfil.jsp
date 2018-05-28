@@ -37,6 +37,10 @@ font-size: 12px;
 padding: 3px;
 text-align: center;
 }
+.boton{
+background: #148F77;
+color: white;
+}
 </style>
 </head>
 <body>
@@ -54,7 +58,10 @@ text-align: center;
     <input class="form-control mr-sm-3" type="search" placeholder="Search" aria-label="Search">
     <button class="btn  my-0 my-sm-0" type="submit" id="button"><font color="white"><b>Search</b></font></button>
   </form>
-</nav></header>
+</nav>
+</header>
+
+<div class="container-fluid">
 
 <div class="row">
 <div class="col-4"></div>
@@ -85,14 +92,14 @@ text-align: center;
 </div>
 <br>
 
-<center><a href="<%=request.getContextPath()%>/admin/usr/editform"
-								class="btn btn-primary"> Editar Usuario</a></center>
+<center><a href="<%=request.getContextPath()%>/admin/usr/editform/"
+class="btn btn-success"> Editar Usuario</a></center>
 
 </div>
 <div class="col-4"></div>
 </div>
 
-
+</div>
 
 								<br>
 								<br>

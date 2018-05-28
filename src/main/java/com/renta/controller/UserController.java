@@ -51,13 +51,17 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 	
 	
 	@GetMapping("/admin/usr/perfil")
-	public String perfil(ModelMap model) {
+	public String perfil(ModelMap model) throws Exception {
 
 		User user = (User)httpSession.getAttribute("user");
-		LOGGER.info("user:" + user);
-		System.out.println("user: " + user);
+		int id = user.getIdusuario();
 		
-		model.addAttribute("user", user);
+		User usr = userService.find(id);
+		
+		LOGGER.info("user:" + user);
+		System.out.println("user: " + usr);
+		
+		model.addAttribute("user", usr);
 		
 		return "/admin/usr/perfil";
 	}
@@ -102,14 +106,18 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 	//---------------------------------------------------------------------------------------------------------------
 	// Editar Usuario -- agregar boton o ruta
 	
-	@GetMapping("/admin/usr/editform")
-	public ModelAndView form(@PathVariable int idusuario, ModelMap model) {
-		idusuario = current_id_user;
+	@GetMapping("/admin/usr/editform/")
+	public ModelAndView form(ModelMap model) {		
 		//logger.info("action = " + action);
 		ModelAndView modelAndView = null;
-
+	
+			
 		try {
-			User usr = userService.find(idusuario);
+			
+			User user = (User)httpSession.getAttribute("user");
+			User usr = userService.find(user.getIdusuario());
+			
+			//User usr = userService.find(idusuario);
 			logger.info(usr.toString());
 			modelAndView = new ModelAndView("admin/usr/editform", "command", usr);
 		} catch (Exception e) {
@@ -119,19 +127,24 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 
 		return modelAndView;
 	}
-	
-	@PostMapping("/admin/usr/editsave")
+	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
 	public ModelAndView editsave(@ModelAttribute("SpringWeb") User usr, ModelMap model) {
 
+
+		/*User user = (User)httpSession.getAttribute("user");
+		LOGGER.info("user:" + user);
+		System.out.println("user: " + user);
 		
-		logger.info("usr = " + usr);
+		model.addAttribute("user", user);
+		logger.info("usr = " + usr);*/
+		
 		
 		ModelAndView modelAndView = null;
 
 		try {
-			userService.update(usr.getUsername(), usr.getPassword(), usr.getNombre(), usr.getApellido(),
-					usr.getCorreo(),usr.getGenero(), usr.getDescripcion(), usr.getTipo_documento(), usr.getNumero_documento(),
-					usr.getTelefono(), usr.getFoto());
+			userService.update(usr.getUsername(), usr.getNombre(), usr.getApellido(),
+					usr.getCorreo(),usr.getGenero(), usr.getDescripcion(), 
+					usr.getTelefono());
 
 			modelAndView = new ModelAndView("redirect:/admin/menu");
 		} catch (Exception e) {

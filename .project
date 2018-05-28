@@ -39,4 +39,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/WEB-INF/views/js-css/lg_empresa.png</name>
+			<type>1</type>
+			<location>C:/Users/Alexandra/Desktop/ProyectoIntegrador/lg_empresa.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
