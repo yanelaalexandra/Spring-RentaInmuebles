@@ -38,7 +38,7 @@ text-align: center;
 }
 </style>
 </head>
-<body>
+<body background="http://ubuntuhandbook.org/wp-content/uploads/2016/09/Yakkety_Yak_Wallpaper_grey.jpg">
 
 <header>
 <nav class="navbar justify-content-between" id="navegador">

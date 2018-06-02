@@ -2,36 +2,56 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Spring MVC CRUD</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Lista de Inmuebles</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<style>
+#navegador{
+background-color: black;
+padding-left: 30px;
+padding-right: 30px;
+font-size: 20px;
+}
+#button{
+background: #1F618D;
+
+}
+.b{
+color: white;
+font-style: bold;
+}
+
+#pie{
+color: white;
+background: #1F618D;
+font-style: bold;
+font-size: 12px;
+padding: 3px;
+text-align: center;
+}
+</style>
 </head>
-<body>
+<body background="http://ubuntuhandbook.org/wp-content/uploads/2016/09/Yakkety_Yak_Wallpaper_grey.jpg">
+
+<header>
+<nav class="navbar justify-content-between" id="navegador">
+ <a class="nav-link" href="<%=request.getContextPath()%>/admin/menu"><font color="white"><b><h3>Home</h3></b></font></a>
+    <a class="nav-link" href="<%=request.getContextPath()%>/admin/emp/createform"><font color="white"><b>Registrar Inmueble</b></font></a>
+  <a class="nav-link" href="<%=request.getContextPath()%>/"><font color="white"><b>Cerrar Sesión</b></font></a>
+</nav>
+</header>
+
 
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="col-md-8">
-				<h4 class="text-center">Inmuebles</h4>
-				<hr>
-					<a href="<%=request.getContextPath()%>/admin/emp/createform"
-					class="btn btn-success"><i class="glyphicon glyphicon-edit"></i>
-					Create Inmuebles</a>
-					<a href="<%=request.getContextPath()%>/user/menu"
-					class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i>
-					Menu</a>
 				<br/> 
-				<table class="table table-bordered table-striped">
-					<thead>
+				<table class="table table-bordered table-striped table-hover">
+					<thead class="thead-dark">
 						<tr>
 							<th>Direccion</th>
-							<th>Coordenadas</th>
-							<th>Imagen</th>
 							<th>Descripcion</th>
 							<th>Tipo Pago</th>
 							<th>Costo</th>
@@ -49,8 +69,6 @@
 						<c:forEach var="inm" items="${inmuebles}">
 							<tr>
 								<td>${inm.direccion}</td>
-								<td>${inm.coordenadas}</td>
-								<td>${inm.imagen}</td>
 								<td>${inm.descripcion}</td>
 								<td>${inm.tipo_costo}</td>
 								<td>${inm.costo}</td>

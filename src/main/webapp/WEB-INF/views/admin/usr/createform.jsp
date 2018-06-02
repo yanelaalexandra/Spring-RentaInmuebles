@@ -30,6 +30,8 @@ font-style: bold;
 #titulo{
 font-size: 55px;
 text-align: center;
+height: 47%;
+opacity: 0.8;
 background: #148F77;
 font-family: 'Passion One', cursive;
 }
@@ -48,9 +50,10 @@ text-align: center;
 
 </style>
 </head>
-<body>
+<body background="http://ubuntuhandbook.org/wp-content/uploads/2016/09/Yakkety_Yak_Wallpaper_grey.jpg">
 
-<div id="titulo" class="jumbotron"><br><img src="https://png.icons8.com/metro/1600/add-user-male.png" height="150" width="150">
+<div id="titulo" class="jumbotron">
+<img src="https://png.icons8.com/metro/1600/add-user-male.png" height="100" width="100">
 <br>
  User Register</div>
 
@@ -91,12 +94,11 @@ text-align: center;
  					</div>
  					<center>
 					<div class="form-group">
+						
+						<a href="<%=request.getContextPath()%>/" class="btn btn-danger"><i class="glyphicon glyphicon-arrow-left"></i> Cancelar</a>
 						<input type="submit" value="Register" class="btn btn-success" />
-					</div>
-					<br>
-					<a href="<%=request.getContextPath()%>/"
-					class="btn btn-danger"><i class="glyphicon glyphicon-arrow-left"></i>
-					Cancelar</a></center>
+					
+					</center></div>
 				</form:form>
 			</div>
 			<div class="col-md-4"></div>

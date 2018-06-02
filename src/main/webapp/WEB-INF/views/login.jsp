@@ -40,6 +40,8 @@ text-align: center;
 #titulo{
 font-size: 55px;
 text-align: center;
+height: 47%;
+opacity: 0.8;
 background: #148F77;
 font-family: 'Passion One', cursive;
 }
@@ -48,11 +50,9 @@ text-align: center;
 }
 </style>
 </head>
-<body>
-<div id="titulo" class="jumbotron"><br><img src="http://static.tumblr.com/9525478e941a1e6e1890feb052dc8390/slqhnp0/JB8mm528u/tumblr_static_ml_logo.png" height="200" width="200">
-<br>
- 
- User Login
+<body background="http://ubuntuhandbook.org/wp-content/uploads/2016/09/Yakkety_Yak_Wallpaper_grey.jpg">
+<div id="titulo" class="jumbotron"><img id="logoemp" src="http://static.tumblr.com/9525478e941a1e6e1890feb052dc8390/slqhnp0/JB8mm528u/tumblr_static_ml_logo.png" height="150" width="150">
+<br> User Login
 </div>
 	
 
@@ -60,13 +60,11 @@ text-align: center;
 		<div class="row-fluid">
 		<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<hr>
 				<form:form method="post" action="login">
 					<div class="form-group">
 						<label for="username"><h4>Login: </h4></label>
 						<form:input path="username" class="form-control" />
 					</div>
-					<br>
 					<div class="form-group">
 						<label for="password"><h4>Password: </h4></label>
 						<form:password path="password" class="form-control" />
@@ -77,13 +75,11 @@ text-align: center;
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn btn-success"/>
 						
-					</div>
 					
-					<br>
-					
+									
 					<a href="<%=request.getContextPath()%>/register"
 					class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i>
-					Register</a>
+					Register</a></div>
 				</center>
 					
 				</form:form>
