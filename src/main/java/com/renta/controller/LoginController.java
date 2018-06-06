@@ -51,7 +51,13 @@ public class LoginController {
 	
 	//@GetMapping("/login")
 	
-	@GetMapping(value={"/", "login"})
+	@GetMapping(value={"/", "home"})
+	public String home() {		
+		return "/home";
+	}
+	
+	
+	@GetMapping("/login")
 	public ModelAndView preLogin() {
 		logger.info("preLogin()");
 		LOGGER.info("preLogin()");

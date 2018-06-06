@@ -152,7 +152,7 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 
 		try {
 			userService.update(usr.getUsername(), usr.getNombre(), usr.getApellido(),
-					usr.getCorreo(),usr.getGenero(), usr.getDescripcion(), 
+					usr.getCorreo(), usr.getGenero(), usr.getDescripcion(), 
 					usr.getTelefono());
 
 			modelAndView = new ModelAndView("redirect:/admin/menu");

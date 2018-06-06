@@ -1,24 +1,21 @@
 package com.renta.model;
 
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Range;
 
 public class Inmueble extends Credential {
 
 	int idinmueble;
+	
 
-	@NotEmpty
 	String direccion;
 
-	@NotEmpty
+
 	String coordenadas;
 		
 	String imagen;
 	String descripcion;
 	String tipo_costo;
 	
-	@Range(min = 1, max = 5000)
+	
 	double costo;
 
 	String capacidad_max;
@@ -29,7 +26,7 @@ public class Inmueble extends Credential {
 	String latitud;
 	String longitud;
 	
-	public Inmueble(int idinmueble, @NotEmpty String direccion, @NotEmpty String coordenadas, String imagen,
+/*public Inmueble(int idinmueble, @NotEmpty String direccion, @NotEmpty String coordenadas, String imagen,
 			String descripcion, String tipo_costo, @Range(min = 1, max = 5000) double costo, String capacidad_max,
 			String tipo_inmueble, int estado, int usuarios_idusuarios, int ranking_idranking, String latitud,
 			String longitud) {
@@ -48,7 +45,7 @@ public class Inmueble extends Credential {
 		this.ranking_idranking = ranking_idranking;
 		this.latitud = latitud;
 		this.longitud = longitud;
-	}
+	}*/
 	public Inmueble() {
 		super();
 		// TODO Auto-generated constructor stub

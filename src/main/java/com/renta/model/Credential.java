@@ -1,13 +1,13 @@
 package com.renta.model;
 
-import javax.validation.constraints.NotEmpty;
+import org.springframework.lang.NonNull;
 
 public class Credential {
 
-	@NotEmpty
+
 	String login;
 
-	@NotEmpty
+
 	String password;
 
 	public Credential() {

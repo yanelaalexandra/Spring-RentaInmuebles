@@ -1,9 +1,6 @@
 package com.renta.controller;
 
 import java.util.Locale;
-
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.renta.exception.DAOException;
 import com.renta.model.Inmueble;
 import com.renta.services.InmuebleService;
@@ -100,7 +96,7 @@ public class InmuebleController {
 	//////////////////////////////////////////////////////////////////////////////////////
 
 	@PostMapping("/admin/emp/editsave")
-	public ModelAndView editsave(@ModelAttribute("inmueble") @Valid Inmueble inm, BindingResult result,
+	public ModelAndView editsave(@ModelAttribute("inmueble") Inmueble inm, BindingResult result,
 			ModelMap model) {
 
 		ModelAndView modelAndView = null;
@@ -127,7 +123,7 @@ public class InmuebleController {
 	//////////////////////////////////////////////////////////////////////////////////////
 
 	@PostMapping("/admin/emp/delete")
-	public ModelAndView delete(@ModelAttribute("inmueble") @Valid Inmueble inm, BindingResult result, ModelMap model) {
+	public ModelAndView delete(@ModelAttribute("inmueble") Inmueble inm, BindingResult result, ModelMap model) {
 
 		ModelAndView modelAndView = null;
 
@@ -163,7 +159,7 @@ public class InmuebleController {
 	}
 
 	@PostMapping("/admin/emp/create")
-	public ModelAndView create(@ModelAttribute("inmueble") @Valid Inmueble inm, BindingResult result, ModelMap model) {
+	public ModelAndView create(@ModelAttribute("inmueble") Inmueble inm, BindingResult result, ModelMap model) {
 
 
 		ModelAndView modelAndView = null;
