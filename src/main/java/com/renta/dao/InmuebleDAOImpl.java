@@ -1,4 +1,4 @@
-package com.renta.dao.jdbc;
+package com.renta.dao;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.renta.dao.InmuebleDAO;
 import com.renta.exception.DAOException;
 import com.renta.exception.EmptyResultException;
 import com.renta.maper.InmuebleMapper;

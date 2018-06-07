@@ -21,6 +21,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="<c:url value="/resources/css/cover.css"/>">
     
+    
 </head>
 <body class="text-center" background="<c:url value="/resources/images/fondo1.jpg"/>">
 
@@ -29,21 +30,31 @@
         <div class="inner">
           <h3 class="masthead-brand">MANKOA</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="<%=request.getContextPath()%>/">Home</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmueble</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
+            <a class="nav-link active" href="<%=request.getContextPath()%>/">Iniciar sesion</a>
           </nav>
         </div>
       </header>
 
-      <main role="main" class="inner cover">
-      <img src="<c:url value="/resources/images/lg_empresa.png"/>">
-        <h1 class="cover-heading">Inmuebles</h1>
-        <p class="lead">Renta de Inmuebles</p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-        </p>
-      </main>
+      <div class="container-fluid">
+		<div class="row">
+			
+			<div class="col">
+			
+				<img  onclick="location.href = '<%=request.getContextPath()%>/login-admin';" 
+						src="<c:url value="/resources/images/admin_img.png"/>" 
+						class="btn btn-outline-primary border border-secondary rounded-circle" 
+						width="200" height="200">
+						
+				<img  onclick="location.href = '<%=request.getContextPath()%>/login-user';" 
+						src="<c:url value="/resources/images/user_img.png"/>" 
+						class="btn btn-outline-danger border border-secondary rounded-circle" 
+						width="200" height="200">				
+			</div>
+
+		</div>
+	</div>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">

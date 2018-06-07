@@ -1,5 +1,5 @@
-package com.renta.dao.jdbc;
-
+package com.renta.dao;
+import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,13 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import com.renta.dao.UserDAO;
-import com.renta.dao.jdbc.UserDAOImpl;
+
+import com.renta.dao.UserDAOImpl;
 import com.renta.exception.DAOException;
 import com.renta.exception.EmptyResultException;
+import com.renta.exception.ErrorAPI;
 import com.renta.exception.LoginException;
 import com.renta.maper.UserMapper;
+import com.renta.model.Admin;
 import com.renta.model.User;
+import com.renta.retrofit.ApiService;
+import com.renta.retrofit.ApiServiceGenerator;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
@@ -23,8 +31,50 @@ public class UserDAOImpl implements UserDAO{
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
-
+	
+	static ErrorAPI error = new ErrorAPI();
+	
+	
+	
+	
+	
+	//Login Usuario - Retrofit
+	public User validate(String username, String password) throws LoginException, DAOException, IOException {
+		
+		logger.info("validate(): login: " + username + ", clave: " + password);
+		
+			
+		 Response<User> response = null;
+		 User user = null;
+		 
+		 ApiService service = ApiServiceGenerator.createService(ApiService.class);
+		 Call<User> call = service.login(username, password);
+		 try {
+				response=call.execute();
+				logger.info("Esperando Respuesta...");
+				
+		 } catch (Exception e) {
+				logger.info("Error en el servicio...");
+				logger.info("onError: " + response.errorBody().string());
+	   						 		
+		 }
+		 
+		 //Validar respuesta exitosa
+		 if (response.isSuccessful()) { 	
+	            user = response.body();
+	            logger.info("Login success!!!");
+	            return user;
+	      } else {	    	  
+	        	logger.info("onError: " + response.errorBody().string());
+	        	error.setMessage(response.errorBody().string());
+	        	return user;
+	      }
+		 
+			 
+		 
+	}
+	
+	
 	public User findUser(int idusuario) throws DAOException, EmptyResultException {
 		
 		
@@ -163,35 +213,6 @@ public List<User> findUserByNombre(String nombre) throws DAOException, EmptyResu
 
 		} catch (EmptyResultDataAccessException e) {
 			throw new EmptyResultException();
-		} catch (Exception e) {
-			logger.info("Error: " + e.getMessage());
-			throw new DAOException(e.getMessage());
-		}
-	}
-
-
-	public User validate(String username, String password) throws LoginException, DAOException {
-	
-		logger.info("validate(): login: " + username + ", clave: " + password);
-	
-		if ("".equals(username) && "".equals(password)) {
-			throw new LoginException("Username and password incorrect");
-		}
-	
-		String query = "SELECT idusuario, username, password, nombre, apellido, correo, genero "
-				+ " FROM usuarios WHERE username=? AND password=?";
-	
-		Object[] params = new Object[] { username, password };
-	
-		try {
-	
-			User usr = (User) jdbcTemplate.queryForObject(query, params, new UserMapper());
-			//
-			return usr;
-	
-		} catch (EmptyResultDataAccessException e) {
-			logger.info("Username y/o password incorrecto");
-			throw new LoginException();
 		} catch (Exception e) {
 			logger.info("Error: " + e.getMessage());
 			throw new DAOException(e.getMessage());

@@ -50,11 +50,20 @@ private static final Logger logger = Logger.getLogger(UserController.class);
 	private ApplicationContext context;
 	
 	
-	@GetMapping("/admin/menu")
-	public String menu() {
-		
-		User usr = new User();
-		return "/admin/menu";
+	
+	@GetMapping("/user/home")
+	public String menuUser() {
+		return "/user/menu_user";
+	}
+	
+	@GetMapping("/user/menu")
+	public String menuUserInmuebles() {
+		return "/user/menu_inmuebles";
+	}
+	
+	@GetMapping("/user/menu-inmuebles")
+	public String menuUserMisInmuebles() {
+		return "/user/menu_mis_inmuebles";
 	}
 	
 	

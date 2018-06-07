@@ -28,21 +28,19 @@
       <header class="masthead mb-auto">
         <div class="inner">
           <h3 class="masthead-brand">MANKOA</h3>
+          <h4>Bienvenido: ${user.nombre}  ${user.apellido}</h4>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="<%=request.getContextPath()%>/">Home</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmueble</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/home">Home</a>
+            <a class="nav-link active" href="<%=request.getContextPath()%>/user/menu">Inmuebles</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/menu-inmuebles" >Mis Inmuebles</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesion</a>
           </nav>
         </div>
       </header>
 
       <main role="main" class="inner cover">
-      <img src="<c:url value="/resources/images/lg_empresa.png"/>">
-        <h1 class="cover-heading">Inmuebles</h1>
-        <p class="lead">Renta de Inmuebles</p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-        </p>
+      
+       
       </main>
 
       <footer class="mastfoot mt-auto">
