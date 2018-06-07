@@ -22,7 +22,21 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/cover.css"/>">
     
 </head>
-<body class="text-center" background="<c:url value="/resources/images/fondo1.jpg"/>">
+
+<style>
+ 	.card-body{
+ 		color: black;
+ 		}
+	body  {
+    background-image: url("<c:url value="/resources/images/fondo1.jpg"/>");
+    background-repeat: repeat;
+    background-attachment: fixed;
+	}
+</style>
+
+
+
+<body class="text-center">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
@@ -35,19 +49,46 @@
           </nav>
         </div>
       </header>
-
-      <main role="main" class="inner cover">
       
-       
-      </main>
+      
+ <main role="main">
+ <br>
+ <hr>
+      <div class="album">
+        <div class="container">
+          <div class="row">
+          <c:forEach var="inm" items="${inmuebles}">
+            <div class="col-md-6">
+              <div class="card mb-6 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">${inm.tipo_inmueble}</h5>
+                   <p class="card-text">${inm.direccion}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary">SHOW DETAILS</button>
+                    </div>
+                    <small class="text-muted">Capacidad Max. : ${inm.capacidad_max}</small>
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div> 
+            </c:forEach>        
+          </div>
+        </div>
+      </div>
+		
+    </main>
 
+      
+     
       <footer class="mastfoot mt-auto">
         <div class="inner">
           <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
         </div>
       </footer>
     </div>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -56,6 +97,7 @@
     <script>window.jQuery || document.write('<script src="<c:url value="/resources/js/jquery-slim.min.js"/>"><\/script>')</script>
     <script src="<c:url value="/resources/js/popper.min.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value="/resources/js/holder.min.js"/>"></script>
    
 </body>
 </html>

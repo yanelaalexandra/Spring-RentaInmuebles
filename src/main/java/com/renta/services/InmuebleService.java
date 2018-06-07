@@ -1,5 +1,6 @@
 package com.renta.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.renta.exception.DAOException;
@@ -11,7 +12,7 @@ public interface InmuebleService {
 	Inmueble find(int idinmueble) throws DAOException, EmptyResultException;
 
 	List<Inmueble> findAll() 
-			throws DAOException, EmptyResultException;
+			throws DAOException, EmptyResultException, IOException;
 
 	void update(String direccion, String coordenadas, String imagen, String descripcion, String tipo_costo, double costo, String capacidad_max, String tipo_inmueble, int estado, String latitud, String longitud)
 			throws DAOException;

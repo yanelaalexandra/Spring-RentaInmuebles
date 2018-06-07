@@ -1,5 +1,7 @@
 package com.renta.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,13 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.renta.dao.AdminDAO;
+import com.renta.dao.InmuebleDAO;
 import com.renta.dao.UserDAO;
 import com.renta.exception.DAOException;
 import com.renta.exception.EmptyResultException;
 import com.renta.exception.LoginException;
 import com.renta.model.Admin;
+import com.renta.model.Inmueble;
 import com.renta.model.User;
 import com.renta.services.SecurityService;
 
@@ -28,7 +31,6 @@ public class LoginController {
 	
 	private static final Logger logger = Logger.getLogger(LoginController.class);
 
-	private static final Logger LOGGER = LogManager.getLogger(LoginController.class.getName());
 	
 	@Autowired
 	private SecurityService securityService;
@@ -38,6 +40,9 @@ public class LoginController {
 	
 	@Autowired
 	private AdminDAO adminDAO;
+	
+	@Autowired
+	private InmuebleDAO inmuebleDAO;
 	
 	
 	
@@ -50,10 +55,25 @@ public class LoginController {
 		return "/home";
 	}
 	
+
+	
 	@GetMapping("/menu")
-	public String menu() {		
+	public String listInmuebles(@ModelAttribute("SpringWeb") Inmueble inmueble, ModelMap model) {
+				
+		try {
+			
+			model.addAttribute("inmuebles", inmuebleDAO.findAllInmuebles());
+			
+		} catch (DAOException | EmptyResultException | IOException e) {
+			
+			e.printStackTrace();
+		}
+		 	
 		return "/menu";
 	}
+	
+	
+	
 	
 	@GetMapping("/login-type")
 	public String prelogin() {		

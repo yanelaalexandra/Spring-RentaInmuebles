@@ -1,5 +1,6 @@
 package com.renta.dao;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,11 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.renta.exception.DAOException;
 import com.renta.exception.EmptyResultException;
 import com.renta.maper.InmuebleMapper;
+import com.renta.model.Admin;
 import com.renta.model.Inmueble;
+import com.renta.retrofit.ApiService;
+import com.renta.retrofit.ApiServiceGenerator;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 @Repository
 public class InmuebleDAOImpl implements InmuebleDAO {
@@ -21,6 +27,81 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+		
+	@Override
+	public List<Inmueble> findAllInmuebles() throws DAOException, EmptyResultException, IOException {
+
+			
+		 Response<List<Inmueble>> response = null;
+		 List<Inmueble> inmueble= null;
+		 
+		 
+		 ApiService service = ApiServiceGenerator.createService(ApiService.class);
+		 Call<List<Inmueble>> call = service.getInmuebles();
+		 
+		 try {
+				response=call.execute();
+				logger.info("Esperando Respuesta...");
+				
+		 } catch (Exception e) {
+				logger.info("Error en el servicio...");
+				logger.info("onError: " + response.errorBody().string());
+	   						 		
+		 }
+		 
+		//Validar respuesta exitosa
+		 if (response.isSuccessful()) { 
+			 
+	            inmueble = response.body();
+	            logger.info("List Success!!!");
+	            
+	            return inmueble;
+	            
+	      } else {	    	  
+	        	logger.info("onError: " + response.errorBody().string());
+	        	return inmueble;
+	      }
+		
+		
+		
+
+		/*try {
+
+			List<Inmueble> inmuebles = ;
+			//
+			return inmuebles;
+
+		} catch (EmptyResultDataAccessException e) {
+			throw new EmptyResultException();
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}*/
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public Inmueble findInmueble(int idinmueble) throws DAOException, EmptyResultException {
 		String query = "SELECT idinmueble, direccion, coordenadas, imagen, descripcion, tipo_costo, costo, capacidad_max, tipo_inmueble, estado, usuarios_idusuarios, ranking_idranking, latitud, longitud "
@@ -119,24 +200,7 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 		}
 	}
 
-	@Override
-	public List<Inmueble> findAllInmuebles() throws DAOException, EmptyResultException {
-
-		String query = "SELECT idinmueble, direccion, coordenadas, imagen, descripcion, tipo_costo, costo, capacidad_max, tipo_inmueble, estado, usuarios_idusuarios, ranking_idranking, latitud, longitud FROM inmuebles ";
-
-		try {
-
-			List<Inmueble> inmuebles = jdbcTemplate.query(query, new InmuebleMapper());
-			//
-			return inmuebles;
-
-		} catch (EmptyResultDataAccessException e) {
-			throw new EmptyResultException();
-		} catch (Exception e) {
-			logger.info("Error: " + e.getMessage());
-			throw new DAOException(e.getMessage());
-		}
-	}
+	
 
 
 }

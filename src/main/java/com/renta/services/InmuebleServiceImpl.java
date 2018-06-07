@@ -1,5 +1,6 @@
 package com.renta.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -28,7 +29,7 @@ public class InmuebleServiceImpl implements InmuebleService {
 		return inm;
 	}
 
-	public List<Inmueble> findAll() throws DAOException, EmptyResultException {
+	public List<Inmueble> findAll() throws DAOException, EmptyResultException, IOException {
 
 		List<Inmueble> inm = inmuebleDAO.findAllInmuebles();
 

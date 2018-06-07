@@ -4,20 +4,12 @@ package com.renta.model;
 public class Inmueble extends Credential {
 
 	int idinmueble;
-	
-
 	String direccion;
-
-
-	String coordenadas;
-		
+	String coordenadas;		
 	String imagen;
 	String descripcion;
-	String tipo_costo;
-	
-	
+	String tipo_costo;	
 	double costo;
-
 	String capacidad_max;
 	String tipo_inmueble;
 	int estado;
@@ -26,7 +18,7 @@ public class Inmueble extends Credential {
 	String latitud;
 	String longitud;
 	
-/*public Inmueble(int idinmueble, @NotEmpty String direccion, @NotEmpty String coordenadas, String imagen,
+    /*public Inmueble(int idinmueble, @NotEmpty String direccion, @NotEmpty String coordenadas, String imagen,
 			String descripcion, String tipo_costo, @Range(min = 1, max = 5000) double costo, String capacidad_max,
 			String tipo_inmueble, int estado, int usuarios_idusuarios, int ranking_idranking, String latitud,
 			String longitud) {
@@ -46,6 +38,7 @@ public class Inmueble extends Credential {
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}*/
+	
 	public Inmueble() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -134,6 +127,7 @@ public class Inmueble extends Credential {
 	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
+	
 	@Override
 	public String toString() {
 		return "Inmueble [idinmueble=" + idinmueble + ", direccion=" + direccion + ", coordenadas=" + coordenadas
