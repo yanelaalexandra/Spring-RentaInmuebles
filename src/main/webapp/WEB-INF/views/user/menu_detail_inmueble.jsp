@@ -58,10 +58,10 @@
                   <h5 class="card-title">${inmueble.tipo_inmueble}</h5>
                    <p class="card-text">${inmueble.direccion}</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                    
+                                     
                       <button type="button" onclick="location.href ='<%=request.getContextPath()%>/user/menu-inmuebles';" class="btn btn-outline-secondary">RETURN</button>
-                    </div>
+                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/inmueble/delete/${inmueble.idinmueble}';" class="btn btn-outline-danger">Delete</button>
+             
                     <small class="text-muted">Capacidad Max. : ${inmueble.capacidad_max}</small>
                   </div>
                 </div>

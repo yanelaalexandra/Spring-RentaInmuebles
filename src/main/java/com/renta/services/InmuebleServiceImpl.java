@@ -45,7 +45,7 @@ public class InmuebleServiceImpl implements InmuebleService {
 	}
 
 
-	public void delete(int idinmueble) throws DAOException {
+	public void delete(int idinmueble) throws DAOException, IOException {
 		// TODO Auto-generated method stub
 		inmuebleDAO.delete(idinmueble);
 		

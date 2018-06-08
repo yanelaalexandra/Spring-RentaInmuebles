@@ -85,8 +85,49 @@ public class InmuebleController {
 		return "/user/menu_detail_general";
 	}
 	
+	//======================================================================================================================================-
+	//======================================================================================================================================
+		// Borrar Inmueble
+    //======================================================================================================================================
+	//======================================================================================================================================
 	
 	
+	/*@GetMapping("/inmueble/delete/{idinmueble}")
+	public String DeleteInmueble(@PathVariable int idinmueble) throws IOException {
+		
+		try {			
+ 		 inmuebleDAO.delete(idinmueble);
+ 		logger.info("Delete... DONE");
+ 		
+		} catch (DAOException e) {
+			
+			e.printStackTrace();
+		}
+		 	
+		return "/user/menu_mis_inmuebles";	
+	}*/
+	
+	@GetMapping("/inmueble/delete/{idinmueble}")
+	public ModelAndView DeleteInmueble(@PathVariable int idinmueble, ModelMap model) { //home.jsp
+
+		ModelAndView modelAndView = null;
+	
+		try {
+			
+			inmuebleDAO.delete(idinmueble);	 		
+	 		modelAndView = new ModelAndView("redirect:/user/menu-inmuebles");
+	 		logger.info("Delete... DONE");
+	 		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return modelAndView;
+	}
+
+	
+	
+
 	//======================================================================================================================================-
 		
 
@@ -177,31 +218,7 @@ public class InmuebleController {
 		return modelAndView;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////
-	// DELETE //
-	//////////////////////////////////////////////////////////////////////////////////////
 
-	@PostMapping("/admin/emp/delete")
-	public ModelAndView delete(@ModelAttribute("inmueble") Inmueble inm, BindingResult result, ModelMap model) {
-
-		ModelAndView modelAndView = null;
-
-		if (result.hasErrors()) {
-			modelAndView = new ModelAndView("admin/emp/deleteform/" + inm.getIdinmueble(), "inmueble", inm);
-		} else {
-			try {
-				inmuebleService.delete(inm.getIdinmueble());
-				modelAndView = new ModelAndView("redirect:/admin/usr/list");
-			} catch (Exception e) {
-				// model.addAttribute("message", e.getMessage());
-				// modelAndView = new ModelAndView("redirect:/admin/emp/list");
-				model.addAttribute("message", e.getMessage());
-				modelAndView = new ModelAndView("admin/emp/deleteform", "inmueble", inm);
-			}
-		}
-
-		return modelAndView;
-	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
 	// CREATION //

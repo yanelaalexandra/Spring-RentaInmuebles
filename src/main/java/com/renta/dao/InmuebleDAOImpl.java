@@ -3,6 +3,7 @@ package com.renta.dao;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.logging.log4j.message.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.renta.exception.EmptyResultException;
 import com.renta.maper.InmuebleMapper;
 import com.renta.model.Admin;
 import com.renta.model.Inmueble;
+import com.renta.model.ResponseMessage;
 import com.renta.model.User;
 import com.renta.retrofit.ApiService;
 import com.renta.retrofit.ApiServiceGenerator;
@@ -186,6 +188,42 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 	}
 	
 	
+	//======================================================================================================================================-
+	//======================================================================================================================================
+		// DELETE
+	//======================================================================================================================================
+	//======================================================================================================================================	
+	
+	@Override
+	public void delete(int idinmueble) throws DAOException, IOException {
+		
+		 Response<ResponseMessage> response = null;
+		 ResponseMessage responseMessage;	 
+		 ApiService service = ApiServiceGenerator.createService(ApiService.class);
+		 Call<ResponseMessage> call = service.deleteInmueble(idinmueble);
+		 
+		 try {
+				response=call.execute();
+				logger.info("Esperando Respuesta...");
+				
+		 } catch (Exception e) {
+				logger.info("Error en el servicio...");
+				logger.info("onError: " + response.errorBody().string());
+	   						 		
+		 }
+		 
+		 //Validar respuesta exitosa
+		 if (response.isSuccessful()) { 	
+	            responseMessage = response.body();
+	            logger.info("Delete Inmueble success!!!");
+	            
+	      } else {	    	  
+	        	logger.info("onError: " + response.errorBody().string());	        	
+	 
+	      }
+		
+	}
+	
 	
 	
 	
@@ -223,20 +261,7 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 	}
 
 	
-	@Override
-	public void delete(int idinmueble) throws DAOException {
-		String query = "DELETE FROM  inmuebles WHERE idinmueble = ? ";
-
-		Object[] params = new Object[] { idinmueble };
-
-		try {
-			jdbcTemplate.update(query, params);
-		} catch (Exception e) {
-			logger.info("Error: " + e.getMessage());
-			throw new DAOException(e.getMessage());
-		}
-		
-	}
+	
 
 	
 	

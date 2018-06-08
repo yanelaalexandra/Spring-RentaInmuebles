@@ -8,6 +8,7 @@ import com.renta.model.Inmueble;
 import com.renta.model.ResponseMessage;
 import com.renta.model.User;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -79,11 +80,12 @@ public interface ApiService {
 		//VER PROPIETARIO DEL INMUEBLE
 		@GET("/api/v1/propietario/{idinmueble}")
 	    Call<User> getPropietario( @Path("idinmueble") int idinmueble);
+
+		//BORRAR USUARIO
+		@DELETE("/api/v1/inmuebles/{idinmueble}")
+		Call<ResponseMessage> deleteInmueble(@Path("idinmueble") int idinmueble);
 	    
 	    
-	    
-	    
-	    
-	    
+
 
 }

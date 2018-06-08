@@ -25,7 +25,7 @@ public interface InmuebleDAO {
 	
 	
 	
-	
+	void delete(int idinmueble) throws DAOException, IOException;
 	
 	
 	
@@ -34,7 +34,7 @@ public interface InmuebleDAO {
 
 	void create(String direccion, String coordenadas, String imagen, String descripcion, String tipo_costo, double costo, String capacidad_max, String tipo_inmueble, int estado, int usuarios_idusuarios, int ranking_idranking, String latitud, String longitud) throws DAOException;
 
-	void delete(int idinmueble) throws DAOException;
+	
 
 	void update(String direccion, String coordenadas, String imagen, String descripcion, String tipo_costo, double costo, String capacidad_max, String tipo_inmueble, int estado, String latitud, String longitud) throws DAOException;
 

@@ -66,7 +66,8 @@
                    <p class="card-text">${inm.direccion}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/';" class="btn btn-outline-secondary">SHOW DETAILS</button>
+  
+                      <button type="button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<b>Debes iniciar sesion para ver detalles</b>" class="btn btn-outline-secondary">SHOW DETAILS</button>
                     </div>
                     <small class="text-muted">Capacidad Max. : ${inm.capacidad_max}</small>
                   </div>
@@ -98,6 +99,12 @@
     <script src="<c:url value="/resources/js/popper.min.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/resources/js/holder.min.js"/>"></script>
+    <script type="text/javascript">
+    $(function () {
+    	  $('[data-toggle="tooltip"]').tooltip()
+    	})
+    
+    </script>
    
 </body>
 </html>
