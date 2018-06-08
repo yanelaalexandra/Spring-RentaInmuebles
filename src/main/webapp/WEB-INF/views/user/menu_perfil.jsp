@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,63 +28,57 @@
       <header class="masthead mb-auto">
         <div class="inner">
           <h3 class="masthead-brand">MANKOA</h3>
-      <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="<%=request.getContextPath()%>/">Home</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
-             <a class="nav-link active" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+          <h4>Bienvenido: ${user.nombre}  ${user.apellido}</h4>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/home">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/menu">Inmuebles</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/menu-inmuebles">Mis Inmuebles</a>
+            <a class="nav-link  active" href="<%=request.getContextPath()%>/user/perfil">Mis Datos</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesion</a>
           </nav>
         </div>
       </header>
 
-     
-      <div class="container-fluid">
-		<div class="row">
-		
-       	<div class="col-2"></div>
-      	<div class="col-8">
-      	<form:form method="post" action="/rentainmuebles/user/save">
-					
-					<form:hidden path="idusuario" class="form-control"/>
-		
-					<div class="form-group">
-						<label for="username"><h4>Username: </h4></label>
-						<form:input path="username" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label for="password"><h4>Password: </h4></label>
-						<form:password path="password" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label for="nombre"><h4>Nombre: </h4></label>
-						<form:input path="nombre" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label for="apellido"><h4>Apellido: </h4></label>
-						<form:input path="apellido" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label for="correo"><h4>Correo: </h4></label>
-						<form:input path="correo" class="form-control" />
-					</div>
-					
-					<div class="form-group">
-						<label for="genero"><h4>Género: </h4></label>
-						 <form:radiobutton path="genero" value="M"/>Masculino
-						<form:radiobutton path="genero" value="F"/>Femenino 
- 					</div>
- 					<center>
-					<div class="form-group">
-						
-						<a href="<%=request.getContextPath()%>/login-user" class="btn btn-danger"><i class="glyphicon glyphicon-arrow-left"></i> Cancelar</a>
-						<input type="submit" value="Register" class="btn btn-success" />
-					
-					</div>
-		</form:form>
-      	
-      	</div>
-      	<div class="col-2"></div>
-        </div>  
-      </div>
+      <main role="main" class="inner cover">
+      		<div class="container-fluid">
+
+				<div class="row">
+				<div class="col-3"></div>
+				<div class="col-6">			
+				<br>
+				<h5>Username</h5>
+				<div class="alert alert-dark" role="alert">
+				  <c:out value="${user.username}"></c:out>
+				</div>
+				<h5>Nombre</h5>
+				<div class="alert alert-dark" role="alert">
+				  <c:out value="${user.nombre}"></c:out>
+				</div>
+				<h5>Apellido</h5>
+				<div class="alert alert-dark" role="alert">
+				  <c:out value="${user.apellido}"></c:out>
+				</div>
+				<h5>Correo</h5>
+				<div class="alert alert-dark" role="alert">
+				  <c:out value="${user.correo}"></c:out>
+				</div>
+				<h5>Género</h5>
+				<div class="alert alert-dark" role="alert">
+				  <c:out value="${user.genero}"></c:out>
+				</div>
+				<br>
+				
+				<center><a href="<%=request.getContextPath()%>/usuario/editar"
+				class="btn btn-success"> Editar Usuario</a></center>
+				
+				</div>
+				<div class="col-3"></div>
+				</div>
+				
+			</div>
+       
+      </main>
+
       <footer class="mastfoot mt-auto">
         <div class="inner">
           <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
@@ -101,3 +97,5 @@
    
 </body>
 </html>
+
+

@@ -1,5 +1,6 @@
 package com.renta.ws;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -81,9 +82,10 @@ public class EmployeeRestController {
 	 * @param id
 	 * @param emp
 	 * @return
+	 * @throws IOException 
 	 */
 	@PutMapping("/emp/{idinmueble}")
-	public ResponseEntity<Inmueble> updateEmp(@PathVariable("idinmueble") int idinmueble, @RequestBody Inmueble inm) {
+	public ResponseEntity<Inmueble> updateEmp(@PathVariable("idinmueble") int idinmueble, @RequestBody Inmueble inm) throws IOException {
 
 		logger.info("Updating Inmueble " + idinmueble);
 
@@ -114,9 +116,10 @@ public class EmployeeRestController {
 	 * 
 	 * @param id
 	 * @return
+	 * @throws IOException 
 	 */
 	@DeleteMapping("/emp/{idinmueble}")
-	public ResponseEntity<Inmueble> deleteEmp(@PathVariable("idinmueble") int idinmueble) {
+	public ResponseEntity<Inmueble> deleteEmp(@PathVariable("idinmueble") int idinmueble) throws IOException {
 		logger.info("Fetching & Deleting Inmueble with id " + idinmueble);
 
 		Inmueble inm;

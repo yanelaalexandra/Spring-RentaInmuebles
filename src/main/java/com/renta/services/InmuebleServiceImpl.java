@@ -22,7 +22,7 @@ public class InmuebleServiceImpl implements InmuebleService {
 	@Autowired
 	private InmuebleDAO inmuebleDAO;
 
-	public Inmueble find(int idinmueble) throws DAOException, EmptyResultException {
+	public Inmueble find(int idinmueble) throws DAOException, EmptyResultException, IOException {
 
 		Inmueble inm = inmuebleDAO.findInmueble(idinmueble);
 

@@ -67,7 +67,7 @@
 						<input type="submit" value="Login" class="btn btn-success"/>
 						
 												
-					<a href="<%=request.getContextPath()%>/register"
+					<a href="<%=request.getContextPath()%>/user/register"
 					class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i>
 					Register</a>
 					

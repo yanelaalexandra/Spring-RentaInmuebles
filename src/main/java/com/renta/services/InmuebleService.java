@@ -9,7 +9,7 @@ import com.renta.model.Inmueble;
 
 public interface InmuebleService {
 	
-	Inmueble find(int idinmueble) throws DAOException, EmptyResultException;
+	Inmueble find(int idinmueble) throws DAOException, EmptyResultException, IOException;
 
 	List<Inmueble> findAll() 
 			throws DAOException, EmptyResultException, IOException;

@@ -34,8 +34,6 @@
 	}
 </style>
 
-
-
 <body class="text-center">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -52,35 +50,22 @@
           </nav>
         </div>
       </header>
-<!-- TE AMO GORDI <3  -->
+
       <main role="main">
-      <br>
- 	  <hr>
-      <div class="album">
-        <div class="container">
-          <div class="row">
-          <c:forEach var="inm" items="${MisInmuebles}">
-            <div class="col-md-6"> 
-              <div class="card mb-6 box-shadow">
+  			<div class="card mb-12 box-shadow">
                 <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">${inm.tipo_inmueble}</h5>
-                   <p class="card-text">${inm.direccion}</p>
+                  <h5 class="card-title">${inmueble.tipo_inmueble}</h5>
+                   <p class="card-text">${inmueble.direccion}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/detail/user/inmueble/${inm.idinmueble}';" class="btn btn-outline-secondary">SHOW DETAILS</button>
+                    
+                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/user/menu-inmuebles';" class="btn btn-outline-secondary">RETURN</button>
                     </div>
-                    <small class="text-muted">Capacidad Max. : ${inm.capacidad_max}</small>
+                    <small class="text-muted">Capacidad Max. : ${inmueble.capacidad_max}</small>
                   </div>
                 </div>
-              </div>
-              <br>
-            </div> 
-            </c:forEach>        
-          </div>
-        </div>
-      </div>
-       
+              </div>    
       </main>
 
       <footer class="mastfoot mt-auto">
@@ -99,6 +84,7 @@
     <script src="<c:url value="/resources/js/popper.min.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/resources/js/holder.min.js"/>"></script>
+   
 </body>
 </html>
 

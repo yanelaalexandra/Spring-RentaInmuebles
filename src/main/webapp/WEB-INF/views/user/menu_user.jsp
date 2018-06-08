@@ -32,7 +32,8 @@
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="<%=request.getContextPath()%>/user/home">Home</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/menu">Inmuebles</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/user/menu_inmuebles">Mis Inmuebles</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/menu-inmuebles">Mis Inmuebles</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/perfil">Mis Datos</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesion</a>
           </nav>
         </div>

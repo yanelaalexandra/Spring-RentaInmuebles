@@ -30,7 +30,7 @@
           <h3 class="masthead-brand">MANKOA</h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="<%=request.getContextPath()%>/">Home</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmueble</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
           </nav>
         </div>

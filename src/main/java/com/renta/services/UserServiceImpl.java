@@ -1,5 +1,6 @@
 package com.renta.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService{
 	private UserDAO userDAO;
 	
 	
-	public User find(int idusuario) throws DAOException, EmptyResultException {
+	public User find(int idusuario) throws DAOException, EmptyResultException, IOException {
 		User usr = userDAO.findUser(idusuario);
 		return usr;
 	}
@@ -31,14 +32,14 @@ public class UserServiceImpl implements UserService{
 
 
 	public void update(String username, String nombre, String apellido, String correo, String genero, String descripcion, int telefono)
-			throws DAOException {
+			throws DAOException, IOException {
 	userDAO.update( username,  nombre, apellido, correo, genero, descripcion,telefono);
 		
 	}
 
 
 	public void create(String username, String password, String nombre, String apellido, String correo, String genero)
-			throws DAOException {
+			throws DAOException, IOException {
 	userDAO.create( username, password, nombre, apellido, correo, genero);
 		
 	}

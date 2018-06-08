@@ -1,5 +1,6 @@
 package com.renta.controller;
 
+import java.io.IOException;
 import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import com.renta.dao.InmuebleDAO;
 import com.renta.exception.DAOException;
+import com.renta.exception.EmptyResultException;
 import com.renta.model.Inmueble;
+import com.renta.model.User;
 import com.renta.services.InmuebleService;
+
 
 /**
  * Handles requests for the application home page.
@@ -31,7 +36,61 @@ public class InmuebleController {
 
 	@Autowired
 	private ApplicationContext context;
+	
+	@Autowired
+	private InmuebleDAO inmuebleDAO;
+	
+	
+	//======================================================================================================================================-
+	//======================================================================================================================================
+		// Detalles Mis Inmuebles
+	//======================================================================================================================================
+    //======================================================================================================================================
+	
+	
+	@GetMapping("/detail/user/inmueble/{idinmueble}")
+	public String detailInmueble(@PathVariable int idinmueble, ModelMap model) {
+	
+		try {
+			
+			Inmueble inmueble = inmuebleDAO.findInmueble(idinmueble);
+			logger.info(inmueble.toString());
+			model.addAttribute("inmueble", inmueble);
+						
+		} catch (DAOException | EmptyResultException | IOException e) {
+			
+			e.printStackTrace();
+		}
+		 	
+		return "/user/menu_detail_inmueble";
+	}
+	
+	
+	@GetMapping("/detail/inmueble/{idinmueble}")
+	public String detailGeneralInmueble(@PathVariable int idinmueble, ModelMap model) {
+	
+		try {
+			
+			Inmueble inmueble = inmuebleDAO.findInmueble(idinmueble);
+			User UserOwner = inmuebleDAO.findPropietario(idinmueble); 
+			logger.info(inmueble.toString());
+			model.addAttribute("inmueble", inmueble);
+			model.addAttribute("userOwner", UserOwner);
+				
+		} catch (DAOException | EmptyResultException | IOException e) {
+			
+			e.printStackTrace();
+		}
+		 	
+		return "/user/menu_detail_general";
+	}
+	
+	
+	
+	//======================================================================================================================================-
+		
 
+	
 /*
 	@GetMapping("/admin/usr/list")
 	public String list(@ModelAttribute("inmueble") Inmueble inmueble, ModelMap model) { //list.jsp

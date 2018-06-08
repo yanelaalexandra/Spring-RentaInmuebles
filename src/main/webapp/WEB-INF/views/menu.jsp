@@ -66,7 +66,7 @@
                    <p class="card-text">${inm.direccion}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-outline-secondary">SHOW DETAILS</button>
+                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/';" class="btn btn-outline-secondary">SHOW DETAILS</button>
                     </div>
                     <small class="text-muted">Capacidad Max. : ${inm.capacidad_max}</small>
                   </div>

@@ -14,6 +14,7 @@ import com.renta.exception.EmptyResultException;
 import com.renta.maper.InmuebleMapper;
 import com.renta.model.Admin;
 import com.renta.model.Inmueble;
+import com.renta.model.User;
 import com.renta.retrofit.ApiService;
 import com.renta.retrofit.ApiServiceGenerator;
 
@@ -29,14 +30,17 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 	private JdbcTemplate jdbcTemplate;
 	
 		
+	//======================================================================================================================================-
+     //======================================================================================================================================
+		// Listar Inmuebles
+	//======================================================================================================================================
+	//======================================================================================================================================
 	@Override
 	public List<Inmueble> findAllInmuebles() throws DAOException, EmptyResultException, IOException {
-
-			
+		
 		 Response<List<Inmueble>> response = null;
 		 List<Inmueble> inmueble= null;
-		 
-		 
+	 		 
 		 ApiService service = ApiServiceGenerator.createService(ApiService.class);
 		 Call<List<Inmueble>> call = service.getInmuebles();
 		 
@@ -54,7 +58,87 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 		 if (response.isSuccessful()) { 
 			 
 	            inmueble = response.body();
-	            logger.info("List Success!!!");
+	            logger.info("Inmuebles List Success!!!");
+	            
+	            return inmueble;
+	            
+	      } else {	    	  
+	        	logger.info("onError: " + response.errorBody().string());
+	        	return inmueble;
+	      }
+	
+	}
+	
+	//======================================================================================================================================-
+	//======================================================================================================================================
+		// Listar Mis Inmuebles
+	//======================================================================================================================================
+	//======================================================================================================================================
+	
+	@Override
+	public List<Inmueble> findUserInmuebles(int idusuario) throws DAOException, EmptyResultException, IOException {
+		
+		 Response<List<Inmueble>> response = null;
+		 List<Inmueble> inmueble= null;
+	 		 
+		 ApiService service = ApiServiceGenerator.createService(ApiService.class);
+		 Call<List<Inmueble>> call = service.getMisInmuebles(idusuario);
+		 
+		 try {
+				response=call.execute();
+				logger.info("Esperando Respuesta...");
+				
+		 } catch (Exception e) {
+				logger.info("Error en el servicio...");
+				logger.info("onError: " + response.errorBody().string());
+	   						 		
+		 }
+		 
+		//Validar respuesta exitosa
+		 if (response.isSuccessful()) { 
+			 
+	            inmueble = response.body();
+	            logger.info("My Inmuebles List Success!!!");
+	            
+	            return inmueble;
+	            
+	      } else {	    	  
+	        	logger.info("onError: " + response.errorBody().string());
+	        	return inmueble;
+	      }
+	}
+
+	
+	//======================================================================================================================================-
+	//======================================================================================================================================
+		// Detalles
+	//======================================================================================================================================
+	//======================================================================================================================================	
+	
+		
+	@Override
+	public Inmueble findInmueble(int idinmueble) throws DAOException, EmptyResultException, IOException {
+
+		 Response<Inmueble> response = null;
+		 Inmueble inmueble= null;
+	 		 
+		 ApiService service = ApiServiceGenerator.createService(ApiService.class);
+		 Call<Inmueble> call = service.getDetailInmueble(idinmueble);
+		 
+		 try {
+				response=call.execute();
+				logger.info("Esperando Respuesta...");
+				
+		 } catch (Exception e) {
+				logger.info("Error en el servicio...");
+				logger.info("onError: " + response.errorBody().string());	   						 		
+		 }
+		 
+		//Validar respuesta exitosa
+		 if (response.isSuccessful()) { 
+			 
+	            inmueble = response.body();
+	            logger.info("Detalles List Success!!!");
 	            
 	            return inmueble;
 	            
@@ -63,63 +147,59 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 	        	return inmueble;
 	      }
 		
-		
-		
-
-		/*try {
-
-			List<Inmueble> inmuebles = ;
-			//
-			return inmuebles;
-
-		} catch (EmptyResultDataAccessException e) {
-			throw new EmptyResultException();
-		} catch (Exception e) {
-			logger.info("Error: " + e.getMessage());
-			throw new DAOException(e.getMessage());
-		}*/
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//======================================================================================================================================-
+	//======================================================================================================================================
+		// Propietario
+	//======================================================================================================================================
+	//======================================================================================================================================	
 	
 	
 	@Override
-	public Inmueble findInmueble(int idinmueble) throws DAOException, EmptyResultException {
-		String query = "SELECT idinmueble, direccion, coordenadas, imagen, descripcion, tipo_costo, costo, capacidad_max, tipo_inmueble, estado, usuarios_idusuarios, ranking_idranking, latitud, longitud "
-				+ " FROM inmuebles WHERE idinmueble = ?" ;
-
-		Object[] params = new Object[] { idinmueble };
-
-		try {
-			Inmueble inm = (Inmueble) jdbcTemplate.queryForObject(query, params, new InmuebleMapper());
-			return inm;
-
-		} catch (EmptyResultDataAccessException e) {
-			throw new EmptyResultException();
-		} catch (Exception e) {
-			logger.info("Error: " + e.getMessage());
-			throw new DAOException(e.getMessage());
-		}
+	public User findPropietario(int idinmueble) throws DAOException, EmptyResultException, IOException {
+		
+		 Response<User> response = null;
+		 User user = null;
+		 
+		 ApiService service = ApiServiceGenerator.createService(ApiService.class);
+		 Call<User> call = service.getPropietario(idinmueble);
+		 try {
+				response=call.execute();
+				logger.info("Esperando Respuesta...");
+				
+		 } catch (Exception e) {
+				logger.info("Error en el servicio...");
+				logger.info("onError: " + response.errorBody().string());
+	   						 		
+		 }
+		 
+		 //Validar respuesta exitosa
+		 if (response.isSuccessful()) { 	
+	            user = response.body();
+	            logger.info("Find Owner success!!!");
+	            return user;
+	      } else {	    	  
+	        	logger.info("onError: " + response.errorBody().string());	        	
+	        	return user;
+	      }
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	//======================================================================================================================================-
+
+	
+	
 	
 	@Override	
 	public void create(String direccion, String coordenadas, String imagen, String descripcion, String tipo_costo,
@@ -200,6 +280,31 @@ public class InmuebleDAOImpl implements InmuebleDAO {
 		}
 	}
 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	
 
 
