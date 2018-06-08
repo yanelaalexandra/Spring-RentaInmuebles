@@ -27,14 +27,14 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MANKOA</h3>
+         <h3 class="masthead-brand"> <img src="<c:url value="/resources/images/lg_empresa.png"/>" width="32" height="32"> MANKOA</h3>
           <h4>Bienvenido: ${user.nombre}  ${user.apellido}</h4>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="<%=request.getContextPath()%>/user/home">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/home">Inicio</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/menu">Inmuebles</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/menu-inmuebles">Mis Inmuebles</a>
             <a class="nav-link  active" href="<%=request.getContextPath()%>/user/perfil">Mis Datos</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesion</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesión</a>
           </nav>
         </div>
       </header>
@@ -50,8 +50,7 @@
 					
 					<form:hidden path="idusuario" class="form-control"/>
 					
-					<div class="form-group">
-						<label for="username">Username: </label>
+					<div class="form-group">Usuario: </label>
 						<form:input path="username" class="form-control"  />
 					</div>
 					<div class="form-group">
@@ -74,19 +73,19 @@
  					</div>
 					
  					<div class="form-group">
-						<label for="descripcion">Descripcion: </label>
+						<label for="descripcion">Descripción: </label>
 						 <form:textarea path="descripcion" class="form-control" />
  					</div>
  								
  					 					
  					<div class="form-group">
-						<label for="telefono">Telefono: </label>
+						<label for="telefono">Teléfono: </label>
 						 <form:input path="telefono" class="form-control"/>
  					</div>
  					 					
  					<center>			
 					<div class="form-group">
-						<input type="submit" value="Save Changes" class="btn btn-success" />
+						<input type="submit" value="Guardar Cambios" class="btn btn-success" />
 					</div>
 					<br>
 					<a href="<%=request.getContextPath()%>/user/perfil"
@@ -106,7 +105,7 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
     </div>

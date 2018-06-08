@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=500, initial-scale=2">
     <meta name="description" content="">
     <meta name="author" content="">
     
@@ -25,31 +25,28 @@
 
 <style>
  	.card-body{
- 		color: black;
+ 		color: #2980B9;
  		}
-	body  {
-    background-image: url("<c:url value="/resources/images/fondo1.jpg"/>");
-    background-repeat: repeat;
-    background-attachment: fixed;
-	}
 </style>
 
 
 
-<body class="text-center">
+<body class="text-center" background="<c:url value="/resources/images/fondo1.jpg"/>">
 
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+<div class="cover-container w-100 h-1000 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MANKOA</h3>
+           <h3 class="masthead-brand"> <img src="<c:url value="/resources/images/lg_empresa.png"/>" width="32" height="32"> MANKOA</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="<%=request.getContextPath()%>/">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/">Inicio</a>
             <a class="nav-link active" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Iniciar sesión</a>
           </nav>
         </div>
       </header>
       
+
       
  <main role="main">
  <br>
@@ -67,7 +64,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
   
-                      <button type="button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<b>Debes iniciar sesion para ver detalles</b>" class="btn btn-outline-secondary">SHOW DETAILS</button>
+                      <button type="button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<b>Debes iniciar sesion para ver detalles</b>" class="btn btn-outline-secondary">DETALLES</button>
                     </div>
                     <small class="text-muted">Capacidad Max. : ${inm.capacidad_max}</small>
                   </div>
@@ -86,10 +83,10 @@
      
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
-    </div>
+   </div> 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

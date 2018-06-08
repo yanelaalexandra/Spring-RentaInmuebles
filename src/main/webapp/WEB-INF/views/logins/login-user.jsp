@@ -27,11 +27,12 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MANKOA - USER</h3>
+                   <h3 class="masthead-brand"> <img src="<c:url value="/resources/images/lg_empresa.png"/>" width="32" height="32"> MANKOA - USER</h3>
+         
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="<%=request.getContextPath()%>/">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/">Inicio</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
-            <a class="nav-link active" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+            <a class="nav-link active" href="<%=request.getContextPath()%>/login-type">Iniciar sesión</a>
           </nav>
         </div>
       </header>
@@ -43,8 +44,8 @@
 					
 				<form:form class="needs-validation" novalidate="true" method="post" action="login-user">
 					<div class="col form-group">
-						<label for="username"><h4>Login: </h4></label>
-						<form:input path="username" class="form-control" required="true" placeholder="Username"/>
+						<label for="username"><h4>Usuario: </h4></label>
+						<form:input path="username" class="form-control" required="true" placeholder="Usuario"/>
 						<div class="invalid-tooltip">
 				          Usuario Requerido
 				        </div>				        				   
@@ -52,8 +53,8 @@
 				
 					<div class="col form-group">
 					  <hr>
-						<label for="password"><h4>Password: </h4></label>
-						<form:password path="password" class="form-control"  required="true" placeholder="Password"/>
+						<label for="password"><h4>Contraseña: </h4></label>
+						<form:password path="password" class="form-control"  required="true" placeholder="Contraseña"/>
 						<div class="invalid-tooltip">
 				          Contraseña Requerida
 				        </div>			      
@@ -64,12 +65,12 @@
 					<center>
 					  <hr>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn btn-success"/>
+						<input type="submit" value="Ingresar" class="btn btn-success"/>
 						
 												
 					<a href="<%=request.getContextPath()%>/user/register"
 					class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i>
-					Register</a>
+					Registrar</a>
 					
 					<a href="<%=request.getContextPath()%>/login-type"
 					class="btn btn-info"><i class="glyphicon glyphicon-edit"></i>
@@ -88,7 +89,7 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-         <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+         <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
     </div>

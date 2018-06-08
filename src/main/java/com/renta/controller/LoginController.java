@@ -54,6 +54,11 @@ public class LoginController {
 		return "/home";
 	}
 	
+	@GetMapping(value={"/info", "info"})
+	public String info() {		
+		return "/info";
+	}
+	
 	@GetMapping("/login-type")
 	public String prelogin() {		
 		return "/logins/pre-login";

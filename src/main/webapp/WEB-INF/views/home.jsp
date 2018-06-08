@@ -29,9 +29,9 @@
         <div class="inner">
           <h3 class="masthead-brand">MANKOA</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="<%=request.getContextPath()%>/">Home</a>
+            <a class="nav-link active" href="<%=request.getContextPath()%>/">Inicio</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Iniciar sesión</a>
           </nav>
         </div>
       </header>
@@ -40,14 +40,15 @@
       <img src="<c:url value="/resources/images/lg_empresa.png"/>">
         <h1 class="cover-heading">Inmuebles</h1>
         <p class="lead">Renta de Inmuebles</p>
+        <p class="lead">Búsqueda, información, contacto, todo para encontrar tu inmueble favorito!</p>
         <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+          <a href="<%=request.getContextPath()%>/info" class="btn btn-lg btn-secondary">Más información</a>
         </p>
       </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
     </div>

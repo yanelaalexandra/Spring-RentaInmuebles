@@ -39,14 +39,14 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MANKOA</h3>
+         <h3 class="masthead-brand"> <img src="<c:url value="/resources/images/lg_empresa.png"/>" width="32" height="32"> MANKOA</h3>
           <h4>Bienvenido: ${user.nombre}  ${user.apellido}</h4>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="<%=request.getContextPath()%>/user/home">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/user/home">Inicio</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/menu">Inmuebles</a>
             <a class="nav-link active" href="<%=request.getContextPath()%>/user/menu-inmuebles" >Mis Inmuebles</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/perfil">Mis Datos</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesion</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesión</a>
           </nav>
         </div>
       </header>
@@ -59,8 +59,8 @@
                    <p class="card-text">${inmueble.direccion}</p>
                   <div class="d-flex justify-content-between align-items-center">
                                      
-                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/user/menu-inmuebles';" class="btn btn-outline-secondary">RETURN</button>
-                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/inmueble/delete/${inmueble.idinmueble}';" class="btn btn-outline-danger">Delete</button>
+                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/user/menu-inmuebles';" class="btn btn-outline-secondary">REGRESAR</button>
+                      <button type="button" onclick="location.href ='<%=request.getContextPath()%>/inmueble/delete/${inmueble.idinmueble}';" class="btn btn-outline-danger">BORRAR</button>
              
                     <small class="text-muted">Capacidad Max. : ${inmueble.capacidad_max}</small>
                   </div>
@@ -70,7 +70,7 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
     </div>

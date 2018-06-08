@@ -25,11 +25,11 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MANKOA</h3>
+         <h3 class="masthead-brand"> <img src="<c:url value="/resources/images/lg_empresa.png"/>" width="32" height="32"> MANKOA</h3>
       <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="<%=request.getContextPath()%>/">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/">Inicio</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
-             <a class="nav-link active" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+             <a class="nav-link active" href="<%=request.getContextPath()%>/login-type">Iniciar sesión</a>
           </nav>
         </div>
       </header>
@@ -45,11 +45,10 @@
 					<form:hidden path="idusuario" class="form-control"/>
 		
 					<div class="form-group">
-						<label for="username"><h4>Username: </h4></label>
+						<label for="username"><h4>Usuario: </h4></label>
 						<form:input path="username" class="form-control" />
 					</div>
-					<div class="form-group">
-						<label for="password"><h4>Password: </h4></label>
+					<div class="form-group"><h4>Contraseña: </h4></label>
 						<form:password path="password" class="form-control" />
 					</div>
 					<div class="form-group">
@@ -72,9 +71,9 @@
  					</div>
  					<center>
 					<div class="form-group">
-						
+							<input type="submit" value="Registrar" class="btn btn-success" />
 						<a href="<%=request.getContextPath()%>/login-user" class="btn btn-danger"><i class="glyphicon glyphicon-arrow-left"></i> Cancelar</a>
-						<input type="submit" value="Register" class="btn btn-success" />
+					
 					
 					</div>
 		</form:form>
@@ -85,7 +84,7 @@
       </div>
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
     </div>

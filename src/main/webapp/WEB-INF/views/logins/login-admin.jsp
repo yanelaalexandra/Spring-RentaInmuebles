@@ -27,11 +27,11 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MANKOA - ADMIN</h3>
+        <h3 class="masthead-brand"> <img src="<c:url value="/resources/images/lg_empresa.png"/>" width="32" height="32"> MANKOA - ADMIN</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="<%=request.getContextPath()%>/">Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/">Inicio</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/menu">Inmuebles</a>
-            <a class="nav-link active" href="<%=request.getContextPath()%>/login-type">Iniciar sesion</a>
+            <a class="nav-link active" href="<%=request.getContextPath()%>/login-type">Iniciar sesión</a>
           </nav>
         </div>
       </header>
@@ -43,17 +43,17 @@
 					
 				<form:form class="needs-validation" novalidate="true" method="post" action="login-admin">
 					<div class="col form-group">
-						<label for="cod_admin"><h4>Admin Code: </h4></label>
-						<form:input path="cod_admin" class="form-control" required="true" placeholder="Code" onkeypress="return isNumberKey(event)"/>
+						<label for="cod_admin"><h4>Código - Administrador: </h4></label>
+						<form:input path="cod_admin" class="form-control" required="true" placeholder="Código" onkeypress="return isNumberKey(event)"/>
 						<div class="invalid-tooltip">
-				          Codigo Requerido
+				          Código Requerido
 				        </div>				        				   
 					</div>
 				
 					<div class="col form-group">
 					  <hr>
-						<label for="pas_admin"><h4>Password: </h4></label>
-						<form:password path="pas_admin" class="form-control"  required="true" placeholder="Password"/>
+						<label for="pas_admin"><h4>Contraseña: </h4></label>
+						<form:password path="pas_admin" class="form-control"  required="true" placeholder="Constraseña"/>
 						<div class="invalid-tooltip">
 				          Contraseña Requerida
 				        </div>			      
@@ -64,7 +64,7 @@
 					<center>
 					  <hr>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn btn-success"/>
+						<input type="submit" value="Ingresar" class="btn btn-success"/>
 																								
 					<a href="<%=request.getContextPath()%>/login-type"
 					class="btn btn-info"><i class="glyphicon glyphicon-edit"></i>
@@ -83,7 +83,7 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
     </div>

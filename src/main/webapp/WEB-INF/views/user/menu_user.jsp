@@ -27,29 +27,81 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MANKOA</h3>
+                <h3 class="masthead-brand"> <img src="<c:url value="/resources/images/lg_empresa.png"/>" width="32" height="32"> MANKOA</h3>
           <h4>Bienvenido: ${user.nombre}  ${user.apellido}</h4>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="<%=request.getContextPath()%>/user/home">Home</a>
+            <a class="nav-link active" href="<%=request.getContextPath()%>/user/home">Inicio</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/menu">Inmuebles</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/menu-inmuebles">Mis Inmuebles</a>
             <a class="nav-link" href="<%=request.getContextPath()%>/user/perfil">Mis Datos</a>
-            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesion</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/login-type">Cerrar sesión</a>
           </nav>
         </div>
       </header>
-
-      <main role="main" class="inner cover">
       
-       
-      </main>
+     <div class="container marketing">
+
+        <!-- START THE FEATURETTES -->
+	
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+          <br>
+            <h2 class="featurette-heading">Casas y departamentos cómodos y accesibles<span class="text-muted"></span></h2>
+            <p class="lead">Podrás encontrar diferentes casa y departamentos asi tambien como cuartos individuales, son accesibles y viables para diferentes usuarios.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="https://1.bp.blogspot.com/-5gg2CObKBgo/WUv0JnTqn6I/AAAAAAAAke0/zYl4dip5xH47-kStGUajmiIDWUaUWvE9QCLcBGAs/s1600/casa.png" alt="Generic placeholder image" width="250" height="250">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+          <br>
+            <h2 class="featurette-heading">Inmuebles familiares.<span class="text-muted"></span></h2>
+            <p class="lead">Puedes encontrar inmuebles para tu familia y pasar un momento agradable sin la necesidad de tomarte mucho tiempo para alquilar una casa.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="http://www.primerolafamilia.com.ar/images/familia-3.png" alt="Generic placeholder image" width="250" height="250">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+          <br>
+          <br>
+            <h2 class="featurette-heading">Precios generosos.<span class="text-muted"></span></h2>
+            <p class="lead">Mostramos diferentes precios para todo tipo de clientes y los pagos diarios, semanales y mensuales del alquiler.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="http://emprendete.sv/wp-content/uploads/2017/06/cash_icon-icons.com_51090-300x300.png" alt="Generic placeholder image" width="250" height="250">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+        
+
+        <!-- /END THE FEATURETTES -->
+
+
+      
+        <center><p class="lead">
+          <a href="<%=request.getContextPath()%>/" class="btn btn-lg btn-secondary">Regresar</a>
+        </p></center>
+      </div>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com</p>
+          <p>Contáctenos al teléfono 259-5361 o al correo rentainmueble@gmail.com Perú-Lima</p>
         </div>
       </footer>
     </div>
+
 
 
     <!-- Bootstrap core JavaScript
